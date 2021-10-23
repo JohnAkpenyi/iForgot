@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		01F960BF9DE1C5C1D54065E7 /* Pods_iForgot_iForgotUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97AEC9F8680D442C9B37B8ED /* Pods_iForgot_iForgotUITests.framework */; };
+		3EE5561070CB87B0D9F66DF7 /* Pods_iForgot.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B3ED8FCFCFD6A41370DF664 /* Pods_iForgot.framework */; };
 		524F3D0127247C160074FB37 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524F3D0027247C160074FB37 /* AppDelegate.swift */; };
 		524F3D0327247C160074FB37 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524F3D0227247C160074FB37 /* SceneDelegate.swift */; };
 		524F3D0527247C160074FB37 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524F3D0427247C160074FB37 /* ViewController.swift */; };
@@ -17,6 +19,7 @@
 		524F3D1B27247C190074FB37 /* iForgotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524F3D1A27247C190074FB37 /* iForgotTests.swift */; };
 		524F3D2527247C190074FB37 /* iForgotUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524F3D2427247C190074FB37 /* iForgotUITests.swift */; };
 		524F3D2727247C190074FB37 /* iForgotUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524F3D2627247C190074FB37 /* iForgotUITestsLaunchTests.swift */; };
+		CFB863B2B0A2458AC7C8BD7D /* Pods_iForgotTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53D754C8327B83CE064D7170 /* Pods_iForgotTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,6 +40,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2E3CC00084C90719E8D0E50D /* Pods-iForgot.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iForgot.release.xcconfig"; path = "Target Support Files/Pods-iForgot/Pods-iForgot.release.xcconfig"; sourceTree = "<group>"; };
+		4CAE40EAFB386FE64E9D32FC /* Pods-iForgot-iForgotUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iForgot-iForgotUITests.debug.xcconfig"; path = "Target Support Files/Pods-iForgot-iForgotUITests/Pods-iForgot-iForgotUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		51F3A7A51C4EE839F6BD743C /* Pods-iForgot-iForgotUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iForgot-iForgotUITests.release.xcconfig"; path = "Target Support Files/Pods-iForgot-iForgotUITests/Pods-iForgot-iForgotUITests.release.xcconfig"; sourceTree = "<group>"; };
 		524F3CFD27247C160074FB37 /* iForgot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iForgot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		524F3D0027247C160074FB37 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		524F3D0227247C160074FB37 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -51,6 +57,12 @@
 		524F3D2027247C190074FB37 /* iForgotUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iForgotUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		524F3D2427247C190074FB37 /* iForgotUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iForgotUITests.swift; sourceTree = "<group>"; };
 		524F3D2627247C190074FB37 /* iForgotUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iForgotUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		53D754C8327B83CE064D7170 /* Pods_iForgotTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iForgotTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		561F9D82290AE9D85D192C11 /* Pods-iForgotTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iForgotTests.release.xcconfig"; path = "Target Support Files/Pods-iForgotTests/Pods-iForgotTests.release.xcconfig"; sourceTree = "<group>"; };
+		97AEC9F8680D442C9B37B8ED /* Pods_iForgot_iForgotUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iForgot_iForgotUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9B3ED8FCFCFD6A41370DF664 /* Pods_iForgot.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iForgot.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9D469C64A7DDEDC630068089 /* Pods-iForgotTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iForgotTests.debug.xcconfig"; path = "Target Support Files/Pods-iForgotTests/Pods-iForgotTests.debug.xcconfig"; sourceTree = "<group>"; };
+		B44E1791D1F4AEEFCF477DDD /* Pods-iForgot.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iForgot.debug.xcconfig"; path = "Target Support Files/Pods-iForgot/Pods-iForgot.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +70,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3EE5561070CB87B0D9F66DF7 /* Pods_iForgot.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,6 +78,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CFB863B2B0A2458AC7C8BD7D /* Pods_iForgotTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -72,12 +86,23 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				01F960BF9DE1C5C1D54065E7 /* Pods_iForgot_iForgotUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		078FB7A51DC89452B4E81DE4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9B3ED8FCFCFD6A41370DF664 /* Pods_iForgot.framework */,
+				97AEC9F8680D442C9B37B8ED /* Pods_iForgot_iForgotUITests.framework */,
+				53D754C8327B83CE064D7170 /* Pods_iForgotTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		524F3CF427247C160074FB37 = {
 			isa = PBXGroup;
 			children = (
@@ -85,6 +110,8 @@
 				524F3D1927247C190074FB37 /* iForgotTests */,
 				524F3D2327247C190074FB37 /* iForgotUITests */,
 				524F3CFE27247C160074FB37 /* Products */,
+				E7550ACD51618CBAC21233F5 /* Pods */,
+				078FB7A51DC89452B4E81DE4 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -162,6 +189,20 @@
 			path = Delegates;
 			sourceTree = "<group>";
 		};
+		E7550ACD51618CBAC21233F5 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B44E1791D1F4AEEFCF477DDD /* Pods-iForgot.debug.xcconfig */,
+				2E3CC00084C90719E8D0E50D /* Pods-iForgot.release.xcconfig */,
+				4CAE40EAFB386FE64E9D32FC /* Pods-iForgot-iForgotUITests.debug.xcconfig */,
+				51F3A7A51C4EE839F6BD743C /* Pods-iForgot-iForgotUITests.release.xcconfig */,
+				9D469C64A7DDEDC630068089 /* Pods-iForgotTests.debug.xcconfig */,
+				561F9D82290AE9D85D192C11 /* Pods-iForgotTests.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -169,9 +210,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 524F3D2A27247C190074FB37 /* Build configuration list for PBXNativeTarget "iForgot" */;
 			buildPhases = (
+				7BED48D3A0CA765A906BEFB3 /* [CP] Check Pods Manifest.lock */,
 				524F3CF927247C160074FB37 /* Sources */,
 				524F3CFA27247C160074FB37 /* Frameworks */,
 				524F3CFB27247C160074FB37 /* Resources */,
+				9FE3437D25E32039E7509524 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -186,6 +229,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 524F3D2D27247C190074FB37 /* Build configuration list for PBXNativeTarget "iForgotTests" */;
 			buildPhases = (
+				8FD874D5CBEBA9CAE750CA39 /* [CP] Check Pods Manifest.lock */,
 				524F3D1227247C190074FB37 /* Sources */,
 				524F3D1327247C190074FB37 /* Frameworks */,
 				524F3D1427247C190074FB37 /* Resources */,
@@ -204,9 +248,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 524F3D3027247C190074FB37 /* Build configuration list for PBXNativeTarget "iForgotUITests" */;
 			buildPhases = (
+				37FBE3043536238A8A3FFB7A /* [CP] Check Pods Manifest.lock */,
 				524F3D1C27247C190074FB37 /* Sources */,
 				524F3D1D27247C190074FB37 /* Frameworks */,
 				524F3D1E27247C190074FB37 /* Resources */,
+				D562E31330455BA81794D2A9 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -287,6 +333,109 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		37FBE3043536238A8A3FFB7A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-iForgot-iForgotUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7BED48D3A0CA765A906BEFB3 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-iForgot-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8FD874D5CBEBA9CAE750CA39 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-iForgotTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9FE3437D25E32039E7509524 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-iForgot/Pods-iForgot-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-iForgot/Pods-iForgot-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-iForgot/Pods-iForgot-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D562E31330455BA81794D2A9 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-iForgot-iForgotUITests/Pods-iForgot-iForgotUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-iForgot-iForgotUITests/Pods-iForgot-iForgotUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-iForgot-iForgotUITests/Pods-iForgot-iForgotUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		524F3CF927247C160074FB37 /* Sources */ = {
@@ -470,6 +619,7 @@
 		};
 		524F3D2B27247C190074FB37 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B44E1791D1F4AEEFCF477DDD /* Pods-iForgot.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -499,6 +649,7 @@
 		};
 		524F3D2C27247C190074FB37 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2E3CC00084C90719E8D0E50D /* Pods-iForgot.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -528,6 +679,7 @@
 		};
 		524F3D2E27247C190074FB37 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9D469C64A7DDEDC630068089 /* Pods-iForgotTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -553,6 +705,7 @@
 		};
 		524F3D2F27247C190074FB37 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 561F9D82290AE9D85D192C11 /* Pods-iForgotTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -578,6 +731,7 @@
 		};
 		524F3D3127247C190074FB37 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4CAE40EAFB386FE64E9D32FC /* Pods-iForgot-iForgotUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -601,6 +755,7 @@
 		};
 		524F3D3227247C190074FB37 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 51F3A7A51C4EE839F6BD743C /* Pods-iForgot-iForgotUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
