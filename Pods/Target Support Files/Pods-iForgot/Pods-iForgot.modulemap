@@ -1,0 +1,6 @@
+framework module Pods_iForgot {
+  umbrella header "Pods-iForgot-umbrella.h"
+
+  export *
+  module * { export * }
+}

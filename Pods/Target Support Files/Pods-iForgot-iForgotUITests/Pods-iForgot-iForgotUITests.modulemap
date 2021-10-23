@@ -1,0 +1,6 @@
+framework module Pods_iForgot_iForgotUITests {
+  umbrella header "Pods-iForgot-iForgotUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
