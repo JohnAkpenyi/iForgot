@@ -1,24 +1,147 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="fMY-iH-bML">
+    <device id="retina6_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Lobster-Regular.ttf">
+            <string>Lobster-Regular</string>
+        </array>
+    </customFonts>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="tne-QT-ifu">
+        <!--Navigation Controller-->
+        <scene sceneID="LiT-rB-DFT">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <navigationController id="fMY-iH-bML" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="fAL-WZ-eAx">
+                        <rect key="frame" x="0.0" y="44" width="428" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="7xX-bs-o9B" kind="relationship" relationship="rootViewController" id="jYa-Wb-sxK"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EG7-pd-U39" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="-77" y="242"/>
+        </scene>
+        <!--New Focus View Controller-->
+        <scene sceneID="XeV-Vo-c1h">
+            <objects>
+                <viewController id="7xX-bs-o9B" customClass="NewFocusViewController" customModule="iForgot" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5Jr-Sz-fDe">
+                        <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="epZ-OX-Ohi">
+                                <rect key="frame" x="158" y="313" width="113" height="88.666666666666686"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" cornerStyle="medium">
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="+">
+                                            <attributes>
+                                                <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                <font key="NSFont" size="64" name="ComicSansMS-Bold"/>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="addFocusBtnPressed:" destination="7xX-bs-o9B" eventType="touchUpInside" id="QE5-hD-cWG"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Zd-Hr-hMB">
+                                <rect key="frame" x="96" y="439" width="237" height="128"/>
+                                <attributedString key="attributedText">
+                                    <fragment>
+                                        <string key="content">New 
+</string>
+                                        <attributes>
+                                            <font key="NSFont" size="64" name="Lobster-Regular"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="Focus">
+                                        <attributes>
+                                            <font key="NSFont" size="64" name="Lobster-Regular"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineHeightMultiple="0.59999999999999998" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="FfZ-N3-zpq"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="epZ-OX-Ohi" firstAttribute="top" secondItem="FfZ-N3-zpq" secondAttribute="top" constant="225" id="Coe-g3-oaB"/>
+                            <constraint firstItem="8Zd-Hr-hMB" firstAttribute="leading" secondItem="FfZ-N3-zpq" secondAttribute="leading" constant="96" id="Th7-zf-F6g"/>
+                            <constraint firstItem="8Zd-Hr-hMB" firstAttribute="top" secondItem="epZ-OX-Ohi" secondAttribute="bottom" constant="37.329999999999998" id="bVq-Qx-33I"/>
+                            <constraint firstItem="FfZ-N3-zpq" firstAttribute="trailing" secondItem="8Zd-Hr-hMB" secondAttribute="trailing" constant="95" id="i4I-PG-sb4"/>
+                            <constraint firstItem="epZ-OX-Ohi" firstAttribute="leading" secondItem="FfZ-N3-zpq" secondAttribute="leading" constant="158" id="l9h-Pc-gOM"/>
+                            <constraint firstItem="FfZ-N3-zpq" firstAttribute="trailing" secondItem="epZ-OX-Ohi" secondAttribute="trailing" constant="157" id="urX-6h-maA"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="PmH-XN-YMw"/>
+                    <connections>
+                        <segue destination="L9f-Gi-n0M" kind="push" identifier="openCalendarView" id="nig-c3-mN6"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8SK-td-pXc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1078.0373831775701" y="241.68466522678187"/>
+        </scene>
+        <!--Calendar View-->
+        <scene sceneID="sT3-NM-TRl">
+            <objects>
+                <viewController id="L9f-Gi-n0M" customClass="CalendarView" customModule="iForgot" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Mpe-r1-RdV">
+                        <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dac-0j-2Su" customClass="FSCalendar">
+                                <rect key="frame" x="0.0" y="88" width="428" height="400"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="400" id="84k-H0-hXO"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="we3-lN-lpN">
+                                <rect key="frame" x="20" y="511" width="388" height="34"/>
+                                <fontDescription key="fontDescription" name="Lobster-Regular" family="Lobster" pointSize="27"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="uhj-mf-lXh"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="we3-lN-lpN" firstAttribute="leading" secondItem="uhj-mf-lXh" secondAttribute="leading" constant="20" id="3QR-zt-s4b"/>
+                            <constraint firstItem="Dac-0j-2Su" firstAttribute="top" secondItem="uhj-mf-lXh" secondAttribute="top" id="RHn-XK-yll"/>
+                            <constraint firstItem="Dac-0j-2Su" firstAttribute="trailing" secondItem="uhj-mf-lXh" secondAttribute="trailing" id="WRf-1Z-NMa"/>
+                            <constraint firstItem="uhj-mf-lXh" firstAttribute="trailing" secondItem="we3-lN-lpN" secondAttribute="trailing" constant="20" id="cks-4f-5UX"/>
+                            <constraint firstItem="we3-lN-lpN" firstAttribute="top" secondItem="Dac-0j-2Su" secondAttribute="bottom" constant="23" id="kIf-43-g4e"/>
+                            <constraint firstItem="Dac-0j-2Su" firstAttribute="leading" secondItem="uhj-mf-lXh" secondAttribute="leading" id="tsB-b7-a6k"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="wlg-sJ-diZ"/>
+                    <connections>
+                        <outlet property="calendar" destination="Dac-0j-2Su" id="hr0-zz-ySY"/>
+                        <outlet property="dateLabel" destination="we3-lN-lpN" id="w9N-KV-EdQ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Qge-gS-rXn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2220.5607476635514" y="241.68466522678187"/>
         </scene>
     </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>
