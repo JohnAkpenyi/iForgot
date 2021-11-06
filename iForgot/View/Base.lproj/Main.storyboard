@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="fMY-iH-bML">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="fMY-iH-bML">
     <device id="retina6_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -22,12 +22,32 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="7xX-bs-o9B" kind="relationship" relationship="rootViewController" id="jYa-Wb-sxK"/>
+                        <segue destination="ZRj-c3-bJb" kind="relationship" relationship="rootViewController" id="cC5-LN-6h4"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EG7-pd-U39" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-77" y="242"/>
+        </scene>
+        <!--Focuses Controller-->
+        <scene sceneID="jbw-26-r5o">
+            <objects>
+                <viewController id="ZRj-c3-bJb" customClass="FocusesController" customModule="iForgot" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="05a-2H-Z3R">
+                        <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="Aj0-U7-xeD"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="2VJ-cC-rVO"/>
+                    <connections>
+                        <segue destination="7xX-bs-o9B" kind="show" identifier="openNewFocus" id="qMQ-ra-wYY"/>
+                        <segue destination="L9f-Gi-n0M" kind="show" identifier="openCalendarView" id="puL-mk-ELv"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sQw-Dr-3xX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1266" y="538"/>
         </scene>
         <!--New Focus View Controller-->
         <scene sceneID="XeV-Vo-c1h">
@@ -56,18 +76,18 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Zd-Hr-hMB">
-                                <rect key="frame" x="96" y="439" width="237" height="128"/>
+                                <rect key="frame" x="96" y="439" width="237" height="122.33333333333337"/>
                                 <attributedString key="attributedText">
                                     <fragment>
                                         <string key="content">New 
 </string>
                                         <attributes>
-                                            <font key="NSFont" size="64" name="Lobster-Regular"/>
+                                            <font key="NSFont" metaFont="system" size="64"/>
                                         </attributes>
                                     </fragment>
                                     <fragment content="Focus">
                                         <attributes>
-                                            <font key="NSFont" size="64" name="Lobster-Regular"/>
+                                            <font key="NSFont" metaFont="system" size="64"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineHeightMultiple="0.59999999999999998" tighteningFactorForTruncation="0.0"/>
                                         </attributes>
                                     </fragment>
@@ -93,7 +113,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8SK-td-pXc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1078.0373831775701" y="241.68466522678187"/>
+            <point key="canvasLocation" x="1267" y="-283"/>
         </scene>
         <!--Calendar View-->
         <scene sceneID="sT3-NM-TRl">
@@ -139,6 +159,9 @@
             <point key="canvasLocation" x="2220.5607476635514" y="241.68466522678187"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="puL-mk-ELv"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

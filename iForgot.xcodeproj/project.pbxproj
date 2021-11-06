@@ -9,6 +9,13 @@
 /* Begin PBXBuildFile section */
 		01F960BF9DE1C5C1D54065E7 /* Pods_iForgot_iForgotUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97AEC9F8680D442C9B37B8ED /* Pods_iForgot_iForgotUITests.framework */; };
 		3EE5561070CB87B0D9F66DF7 /* Pods_iForgot.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B3ED8FCFCFD6A41370DF664 /* Pods_iForgot.framework */; };
+		523987F52735F11F001C9353 /* Focus+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523987EF2735F11F001C9353 /* Focus+CoreDataClass.swift */; };
+		523987F62735F11F001C9353 /* Focus+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523987F02735F11F001C9353 /* Focus+CoreDataProperties.swift */; };
+		523987F72735F11F001C9353 /* Focuses+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523987F12735F11F001C9353 /* Focuses+CoreDataClass.swift */; };
+		523987F82735F11F001C9353 /* Focuses+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523987F22735F11F001C9353 /* Focuses+CoreDataProperties.swift */; };
+		523987F92735F11F001C9353 /* Day+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523987F32735F11F001C9353 /* Day+CoreDataClass.swift */; };
+		523987FA2735F11F001C9353 /* Day+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523987F42735F11F001C9353 /* Day+CoreDataProperties.swift */; };
+		523987FC27360C01001C9353 /* FocusesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523987FB27360C00001C9353 /* FocusesController.swift */; };
 		524F3D0127247C160074FB37 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524F3D0027247C160074FB37 /* AppDelegate.swift */; };
 		524F3D0327247C160074FB37 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524F3D0227247C160074FB37 /* SceneDelegate.swift */; };
 		524F3D0527247C160074FB37 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524F3D0427247C160074FB37 /* ViewController.swift */; };
@@ -46,6 +53,13 @@
 		2E3CC00084C90719E8D0E50D /* Pods-iForgot.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iForgot.release.xcconfig"; path = "Target Support Files/Pods-iForgot/Pods-iForgot.release.xcconfig"; sourceTree = "<group>"; };
 		4CAE40EAFB386FE64E9D32FC /* Pods-iForgot-iForgotUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iForgot-iForgotUITests.debug.xcconfig"; path = "Target Support Files/Pods-iForgot-iForgotUITests/Pods-iForgot-iForgotUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		51F3A7A51C4EE839F6BD743C /* Pods-iForgot-iForgotUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iForgot-iForgotUITests.release.xcconfig"; path = "Target Support Files/Pods-iForgot-iForgotUITests/Pods-iForgot-iForgotUITests.release.xcconfig"; sourceTree = "<group>"; };
+		523987EF2735F11F001C9353 /* Focus+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Focus+CoreDataClass.swift"; sourceTree = "<group>"; };
+		523987F02735F11F001C9353 /* Focus+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Focus+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		523987F12735F11F001C9353 /* Focuses+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Focuses+CoreDataClass.swift"; sourceTree = "<group>"; };
+		523987F22735F11F001C9353 /* Focuses+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Focuses+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		523987F32735F11F001C9353 /* Day+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Day+CoreDataClass.swift"; sourceTree = "<group>"; };
+		523987F42735F11F001C9353 /* Day+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Day+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		523987FB27360C00001C9353 /* FocusesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusesController.swift; sourceTree = "<group>"; };
 		524F3CFD27247C160074FB37 /* iForgot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iForgot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		524F3D0027247C160074FB37 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		524F3D0227247C160074FB37 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -162,6 +176,12 @@
 		524F3D3327247CDC0074FB37 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				523987EF2735F11F001C9353 /* Focus+CoreDataClass.swift */,
+				523987F02735F11F001C9353 /* Focus+CoreDataProperties.swift */,
+				523987F12735F11F001C9353 /* Focuses+CoreDataClass.swift */,
+				523987F22735F11F001C9353 /* Focuses+CoreDataProperties.swift */,
+				523987F32735F11F001C9353 /* Day+CoreDataClass.swift */,
+				523987F42735F11F001C9353 /* Day+CoreDataProperties.swift */,
 				524F3D0927247C160074FB37 /* iForgot.xcdatamodeld */,
 			);
 			path = Model;
@@ -185,6 +205,7 @@
 				524F3D0427247C160074FB37 /* ViewController.swift */,
 				524F3D3D272494A60074FB37 /* CalendarView.swift */,
 				524F3D3F2724A10F0074FB37 /* NewFocusViewController.swift */,
+				523987FB27360C00001C9353 /* FocusesController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -459,10 +480,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				523987F52735F11F001C9353 /* Focus+CoreDataClass.swift in Sources */,
 				524F3D402724A10F0074FB37 /* NewFocusViewController.swift in Sources */,
 				524F3D3E272494A60074FB37 /* CalendarView.swift in Sources */,
 				524F3D0527247C160074FB37 /* ViewController.swift in Sources */,
+				523987F92735F11F001C9353 /* Day+CoreDataClass.swift in Sources */,
+				523987F72735F11F001C9353 /* Focuses+CoreDataClass.swift in Sources */,
+				523987F62735F11F001C9353 /* Focus+CoreDataProperties.swift in Sources */,
+				523987F82735F11F001C9353 /* Focuses+CoreDataProperties.swift in Sources */,
+				523987FA2735F11F001C9353 /* Day+CoreDataProperties.swift in Sources */,
 				524F3D0127247C160074FB37 /* AppDelegate.swift in Sources */,
+				523987FC27360C01001C9353 /* FocusesController.swift in Sources */,
 				524F3D0B27247C160074FB37 /* iForgot.xcdatamodeld in Sources */,
 				524F3D0327247C160074FB37 /* SceneDelegate.swift in Sources */,
 			);

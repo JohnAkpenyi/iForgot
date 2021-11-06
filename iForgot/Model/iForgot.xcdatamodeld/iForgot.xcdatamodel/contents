@@ -1,9 +1,21 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19206" systemVersion="20G165" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="YES" userDefinedModelVersionIdentifier="">
-    <entity name="Focus" representedClassName="Focus" syncable="YES" codeGenerationType="class"/>
-    <entity name="Focuses" representedClassName="Focuses" syncable="YES" codeGenerationType="class"/>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19461" systemVersion="21A559" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="YES" userDefinedModelVersionIdentifier="">
+    <entity name="Day" representedClassName="Day" syncable="YES">
+        <attribute name="activitiesDone" optional="YES" attributeType="String" customClassName="[String]"/>
+        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <relationship name="origon" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Focus" inverseName="days" inverseEntity="Focus"/>
+    </entity>
+    <entity name="Focus" representedClassName="Focus" syncable="YES">
+        <attribute name="focusName" optional="YES" attributeType="String"/>
+        <relationship name="days" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Day" inverseName="origon" inverseEntity="Day"/>
+        <relationship name="origon" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Focuses" inverseName="focuses" inverseEntity="Focuses"/>
+    </entity>
+    <entity name="Focuses" representedClassName="Focuses" syncable="YES">
+        <relationship name="focuses" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Focus" inverseName="origon" inverseEntity="Focus"/>
+    </entity>
     <elements>
-        <element name="Focuses" positionX="-63" positionY="-18" width="128" height="29"/>
-        <element name="Focus" positionX="-54" positionY="-9" width="128" height="29"/>
+        <element name="Day" positionX="115.80078125" positionY="-76.51953125" width="128" height="74"/>
+        <element name="Focus" positionX="-72.171875" positionY="-127.02734375" width="128" height="88"/>
+        <element name="Focuses" positionX="-260.375" positionY="-59.73828125" width="128" height="58"/>
     </elements>
 </model>

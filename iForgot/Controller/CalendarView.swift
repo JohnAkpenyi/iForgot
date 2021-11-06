@@ -7,6 +7,7 @@
 
 import UIKit
 import FSCalendar
+import CoreData
 
 class CalendarView: UIViewController{
     
@@ -48,6 +49,42 @@ extension CalendarView: FSCalendarDataSource, FSCalendarDelegate{
         
         dateLabel.fadeTransition(0.5)
         dateLabel.text = string
+        
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        
+        //var focuses = Focuses(context: context)
+        
+        //var focus = Focus(context: context)
+        
+        //var day = Day(context: context)
+        
+        /*day.date = date
+        day.addActivity(activity: "Bench press")
+        day.addActivity(activity: "Weights")
+        
+        focus.focusName = "Gym"
+        focus.addToDays(day)
+        
+        focuses.addToFocuses(focus)
+        
+        (UIApplication.shared.delegate as! AppDelegate).saveContext()*/
+        
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Focuses")
+        request.returnsObjectsAsFaults = false
+        do {
+            let result = try context.fetch(request)
+            for data in result as! [NSManagedObject] {
+                let focuses = data.value(forKey: "focuses") as! NSSet
+                let f = focuses.allObjects as! [Focus]
+                //let age = data.value(forKey: "age") as! String
+                print(f[0].dayArray[0].activitiesDone?.components(separatedBy: ","))
+            }
+        } catch {
+            print("Fetching data Failed")
+        }
+        
+        
+
     }
     
     
