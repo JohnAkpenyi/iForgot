@@ -22,37 +22,17 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="ZRj-c3-bJb" kind="relationship" relationship="rootViewController" id="cC5-LN-6h4"/>
+                        <segue destination="7xX-bs-o9B" kind="relationship" relationship="rootViewController" id="5Tc-AX-RmI"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EG7-pd-U39" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-77" y="242"/>
         </scene>
-        <!--Focuses Controller-->
-        <scene sceneID="jbw-26-r5o">
-            <objects>
-                <viewController id="ZRj-c3-bJb" customClass="FocusesController" customModule="iForgot" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="05a-2H-Z3R">
-                        <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="Aj0-U7-xeD"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="2VJ-cC-rVO"/>
-                    <connections>
-                        <segue destination="7xX-bs-o9B" kind="show" identifier="openNewFocus" id="qMQ-ra-wYY"/>
-                        <segue destination="L9f-Gi-n0M" kind="show" identifier="openCalendarView" id="puL-mk-ELv"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="sQw-Dr-3xX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1266" y="538"/>
-        </scene>
-        <!--New Focus View Controller-->
+        <!--Focuses View Controller-->
         <scene sceneID="XeV-Vo-c1h">
             <objects>
-                <viewController id="7xX-bs-o9B" customClass="NewFocusViewController" customModule="iForgot" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="7xX-bs-o9B" customClass="FocusesViewController" customModule="iForgot" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5Jr-Sz-fDe">
                         <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -72,48 +52,124 @@
                                     </attributedString>
                                 </buttonConfiguration>
                                 <connections>
-                                    <action selector="addFocusBtnPressed:" destination="7xX-bs-o9B" eventType="touchUpInside" id="QE5-hD-cWG"/>
+                                    <action selector="addNewFocuses:" destination="7xX-bs-o9B" eventType="touchUpInside" id="91g-kC-k2v"/>
+                                    <segue destination="7CJ-a9-Lgi" kind="show" id="aBV-KD-oiW"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Zd-Hr-hMB">
-                                <rect key="frame" x="96" y="439" width="237" height="122.33333333333337"/>
+                                <rect key="frame" x="96" y="439" width="237" height="128"/>
                                 <attributedString key="attributedText">
                                     <fragment>
                                         <string key="content">New 
 </string>
                                         <attributes>
-                                            <font key="NSFont" metaFont="system" size="64"/>
+                                            <font key="NSFont" size="64" name="Lobster-Regular"/>
                                         </attributes>
                                     </fragment>
                                     <fragment content="Focus">
                                         <attributes>
-                                            <font key="NSFont" metaFont="system" size="64"/>
+                                            <font key="NSFont" size="64" name="Lobster-Regular"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineHeightMultiple="0.59999999999999998" tighteningFactorForTruncation="0.0"/>
                                         </attributes>
                                     </fragment>
                                 </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="5gt-oW-tha">
+                                <rect key="frame" x="20" y="114" width="388" height="778"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="FfZ-N3-zpq"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="5gt-oW-tha" firstAttribute="bottom" secondItem="FfZ-N3-zpq" secondAttribute="bottom" id="BZB-c4-N5S"/>
                             <constraint firstItem="epZ-OX-Ohi" firstAttribute="top" secondItem="FfZ-N3-zpq" secondAttribute="top" constant="225" id="Coe-g3-oaB"/>
                             <constraint firstItem="8Zd-Hr-hMB" firstAttribute="leading" secondItem="FfZ-N3-zpq" secondAttribute="leading" constant="96" id="Th7-zf-F6g"/>
                             <constraint firstItem="8Zd-Hr-hMB" firstAttribute="top" secondItem="epZ-OX-Ohi" secondAttribute="bottom" constant="37.329999999999998" id="bVq-Qx-33I"/>
                             <constraint firstItem="FfZ-N3-zpq" firstAttribute="trailing" secondItem="8Zd-Hr-hMB" secondAttribute="trailing" constant="95" id="i4I-PG-sb4"/>
                             <constraint firstItem="epZ-OX-Ohi" firstAttribute="leading" secondItem="FfZ-N3-zpq" secondAttribute="leading" constant="158" id="l9h-Pc-gOM"/>
+                            <constraint firstItem="5gt-oW-tha" firstAttribute="leading" secondItem="FfZ-N3-zpq" secondAttribute="leading" constant="20" id="p2y-B9-UbU"/>
+                            <constraint firstItem="5gt-oW-tha" firstAttribute="top" secondItem="FfZ-N3-zpq" secondAttribute="top" constant="26" id="t3z-bP-PUU"/>
                             <constraint firstItem="FfZ-N3-zpq" firstAttribute="trailing" secondItem="epZ-OX-Ohi" secondAttribute="trailing" constant="157" id="urX-6h-maA"/>
+                            <constraint firstItem="FfZ-N3-zpq" firstAttribute="trailing" secondItem="5gt-oW-tha" secondAttribute="trailing" constant="20" id="vnn-fQ-Lpj"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="PmH-XN-YMw"/>
+                    <navigationItem key="navigationItem" id="PmH-XN-YMw">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="EK1-uS-E7N">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="Zks-I7-KUJ">
+                                <rect key="frame" x="313" y="5" width="95" height="34.333333333333336"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="+"/>
+                                <connections>
+                                    <segue destination="7CJ-a9-Lgi" kind="show" id="4bM-Vh-gW8"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
-                        <segue destination="L9f-Gi-n0M" kind="push" identifier="openCalendarView" id="nig-c3-mN6"/>
+                        <outlet property="addfocusBtn" destination="EK1-uS-E7N" id="vOl-Ec-hwb"/>
+                        <outlet property="focusesTable" destination="5gt-oW-tha" id="lKR-Oh-yxS"/>
+                        <outlet property="newFocusLabel" destination="8Zd-Hr-hMB" id="fcu-pc-XAD"/>
+                        <outlet property="plusBtn" destination="epZ-OX-Ohi" id="wzX-CX-Eqt"/>
+                        <segue destination="L9f-Gi-n0M" kind="show" identifier="openCalendarFocus" id="VDM-Ya-Ygc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8SK-td-pXc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1267" y="-283"/>
+            <point key="canvasLocation" x="712.14953271028037" y="-598.05615550755942"/>
+        </scene>
+        <!--Add New Focus Controller-->
+        <scene sceneID="oZi-Sf-xYA">
+            <objects>
+                <viewController id="7CJ-a9-Lgi" customClass="AddNewFocusController" customModule="iForgot" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="g6w-gL-iHY">
+                        <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Focus name..." textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zbz-19-s1I">
+                                <rect key="frame" x="112" y="337" width="205" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d9q-Ig-GLZ">
+                                <rect key="frame" x="161" y="469" width="106" height="74"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled">
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="Create">
+                                            <attributes>
+                                                <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                <font key="NSFont" size="29" name="Lobster-Regular"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="createBtnPressed:" destination="7CJ-a9-Lgi" eventType="touchUpInside" id="bnA-o1-PKZ"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="RkA-BN-eIA"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="RkA-BN-eIA" firstAttribute="trailing" secondItem="zbz-19-s1I" secondAttribute="trailing" constant="111" id="MN3-1q-foV"/>
+                            <constraint firstItem="zbz-19-s1I" firstAttribute="leading" secondItem="RkA-BN-eIA" secondAttribute="leading" constant="112" id="NUE-cN-JAe"/>
+                            <constraint firstItem="zbz-19-s1I" firstAttribute="top" secondItem="RkA-BN-eIA" secondAttribute="top" constant="249" id="Y8d-Pi-dju"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="ULI-Ik-j5d"/>
+                    <connections>
+                        <outlet property="createBtn" destination="d9q-Ig-GLZ" id="4TB-Fx-3q0"/>
+                        <outlet property="nameField" destination="zbz-19-s1I" id="SN6-cH-h3d"/>
+                        <segue destination="L9f-Gi-n0M" kind="show" identifier="openCalendarView" id="25j-pr-1Gq"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="I9G-hw-cEH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2193" y="-484"/>
         </scene>
         <!--Calendar View-->
         <scene sceneID="sT3-NM-TRl">
@@ -129,6 +185,10 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="400" id="84k-H0-hXO"/>
                                 </constraints>
+                                <connections>
+                                    <outlet property="dataSource" destination="L9f-Gi-n0M" id="BCC-bC-olt"/>
+                                    <outlet property="delegate" destination="L9f-Gi-n0M" id="NNF-Hc-GR8"/>
+                                </connections>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="we3-lN-lpN">
                                 <rect key="frame" x="20" y="511" width="388" height="34"/>
@@ -136,31 +196,47 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="giw-5a-xQf">
+                                <rect key="frame" x="20" y="553" width="388" height="339"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WMd-ef-7Bl">
+                                <rect key="frame" x="166" y="46" width="97" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="uhj-mf-lXh"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="uhj-mf-lXh" firstAttribute="trailing" secondItem="giw-5a-xQf" secondAttribute="trailing" constant="20" id="0Ns-pi-uQM"/>
                             <constraint firstItem="we3-lN-lpN" firstAttribute="leading" secondItem="uhj-mf-lXh" secondAttribute="leading" constant="20" id="3QR-zt-s4b"/>
+                            <constraint firstItem="giw-5a-xQf" firstAttribute="leading" secondItem="uhj-mf-lXh" secondAttribute="leading" constant="20" id="8VZ-BU-1aM"/>
                             <constraint firstItem="Dac-0j-2Su" firstAttribute="top" secondItem="uhj-mf-lXh" secondAttribute="top" id="RHn-XK-yll"/>
                             <constraint firstItem="Dac-0j-2Su" firstAttribute="trailing" secondItem="uhj-mf-lXh" secondAttribute="trailing" id="WRf-1Z-NMa"/>
                             <constraint firstItem="uhj-mf-lXh" firstAttribute="trailing" secondItem="we3-lN-lpN" secondAttribute="trailing" constant="20" id="cks-4f-5UX"/>
                             <constraint firstItem="we3-lN-lpN" firstAttribute="top" secondItem="Dac-0j-2Su" secondAttribute="bottom" constant="23" id="kIf-43-g4e"/>
+                            <constraint firstItem="giw-5a-xQf" firstAttribute="bottom" secondItem="uhj-mf-lXh" secondAttribute="bottom" id="ocu-ox-3S6"/>
+                            <constraint firstItem="giw-5a-xQf" firstAttribute="top" secondItem="we3-lN-lpN" secondAttribute="bottom" constant="8" symbolic="YES" id="qyr-du-Tbn"/>
                             <constraint firstItem="Dac-0j-2Su" firstAttribute="leading" secondItem="uhj-mf-lXh" secondAttribute="leading" id="tsB-b7-a6k"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="wlg-sJ-diZ"/>
                     <connections>
+                        <outlet property="activitiesTable" destination="giw-5a-xQf" id="MZK-jy-yox"/>
                         <outlet property="calendar" destination="Dac-0j-2Su" id="hr0-zz-ySY"/>
                         <outlet property="dateLabel" destination="we3-lN-lpN" id="w9N-KV-EdQ"/>
+                        <outlet property="focusTextField" destination="WMd-ef-7Bl" id="8cP-RS-F2Z"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qge-gS-rXn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2220.5607476635514" y="241.68466522678187"/>
+            <point key="canvasLocation" x="2684.5794392523362" y="223.54211663066957"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="puL-mk-ELv"/>
+        <segue reference="VDM-Ya-Ygc"/>
+        <segue reference="4bM-Vh-gW8"/>
     </inferredMetricsTieBreakers>
     <resources>
         <systemColor name="systemBackgroundColor">

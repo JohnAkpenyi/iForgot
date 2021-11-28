@@ -11,18 +11,32 @@ import CoreData
 
 class CalendarView: UIViewController{
     
-
+    var selectedFocus = Focus()
+    
+    let dm = DataManager()
+    var selectedDate = Date()
+    var showingDay = Day()
+    
     @IBOutlet weak var calendar: FSCalendar!
     @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var activitiesTable: UITableView!
+    @IBOutlet weak var focusTextField: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         calendar.dataSource = self
         calendar.delegate = self
-
-        // Do any additional setup after loading the view.
+        activitiesTable.dataSource = self
+        activitiesTable.delegate = self
+        
+        focusTextField.text = selectedFocus.name
+        
+        showingDay = Day(context: dm.managedContext)
+        
+        print(showingDay)
     }
+    
 
     /*
     // MARK: - Navigation
@@ -50,41 +64,25 @@ extension CalendarView: FSCalendarDataSource, FSCalendarDelegate{
         dateLabel.fadeTransition(0.5)
         dateLabel.text = string
         
-        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        /*for i in 0...4{
+            dm.addDay(focus: dm.focuses.focuses?.allObjects[i] as! Focus, date: date, activities: ["Did pushups", "Did weights"])
+        }*/
         
-        //var focuses = Focuses(context: context)
         
-        //var focus = Focus(context: context)
+        print((self.selectedFocus.listOfDays?.allObjects as! [Day])[0])
         
-        //var day = Day(context: context)
+        selectedDate = date
         
-        /*day.date = date
-        day.addActivity(activity: "Bench press")
-        day.addActivity(activity: "Weights")
+        showingDay.listOfActivities = []
         
-        focus.focusName = "Gym"
-        focus.addToDays(day)
-        
-        focuses.addToFocuses(focus)
-        
-        (UIApplication.shared.delegate as! AppDelegate).saveContext()*/
-        
-        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Focuses")
-        request.returnsObjectsAsFaults = false
-        do {
-            let result = try context.fetch(request)
-            for data in result as! [NSManagedObject] {
-                let focuses = data.value(forKey: "focuses") as! NSSet
-                let f = focuses.allObjects as! [Focus]
-                //let age = data.value(forKey: "age") as! String
-                print(f[0].dayArray[0].activitiesDone?.components(separatedBy: ","))
+        for i in selectedFocus.listOfDays?.allObjects as! [Day]{
+            if i.date == selectedDate{
+               showingDay = i
             }
-        } catch {
-            print("Fetching data Failed")
         }
         
+        self.activitiesTable.reloadData()
         
-
     }
     
     
@@ -99,4 +97,26 @@ extension UIView {
         animation.duration = duration
         layer.add(animation, forKey: CATransitionType.fade.rawValue)
     }
+}
+
+
+extension CalendarView: UITableViewDelegate, UITableViewDataSource{
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        return showingDay.listOfActivities?.count ?? 0
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = UITableViewCell()
+        
+        var content = cell.defaultContentConfiguration()
+        
+        content.text = showingDay.listOfActivities?[indexPath.row]
+        
+        cell.contentConfiguration = content
+        
+        return cell
+    }
+    
+    
 }

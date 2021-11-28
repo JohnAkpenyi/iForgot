@@ -2,7 +2,7 @@
 //  Focuses+CoreDataProperties.swift
 //  iForgot
 //
-//  Created by John Akpenyi on 05/11/2021.
+//  Created by John Akpenyi on 23/11/2021.
 //
 //
 
@@ -18,14 +18,6 @@ extension Focuses {
 
     @NSManaged public var focuses: NSSet?
 
-    
-    public var focusesArray: [Focus] {
-        let set = focuses as? Set<Focus> ?? []
-        
-        return set.sorted{
-            $0.wrappedName < $1.wrappedName
-        }
-    }
 }
 
 // MARK: Generated accessors for focuses
