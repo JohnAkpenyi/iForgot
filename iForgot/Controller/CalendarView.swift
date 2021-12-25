@@ -16,6 +16,7 @@ class CalendarView: UIViewController{
     let dm = DataManager()
     var selectedDate = Date()
     var showingDay = Day()
+    let emptyDay = Day()
     
     @IBOutlet weak var calendar: FSCalendar!
     @IBOutlet weak var dateLabel: UILabel!
@@ -34,20 +35,52 @@ class CalendarView: UIViewController{
         
         showingDay = Day(context: dm.managedContext)
         
-        print(showingDay)
+        
+        //print(showingDay)
     }
     
 
-    /*
-    // MARK: - Navigation
+    @IBAction func addActivity(_ sender: Any) {
+ 
+        // create the actual alert controller view that will be the pop-up
+        let alertController = UIAlertController(title: "New Activity", message: "Name this activity", preferredStyle: .alert)
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        alertController.addTextField { (textField) in
+            // configure the properties of the text field
+            textField.placeholder = "..."
+        }
+
+
+        // add the buttons/actions to the view controller
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        let saveAction = UIAlertAction(title: "Save", style: .default) { _ in
+
+            // this code runs when the user hits the "save" button
+            
+            // tht text in the textfield
+            let inputName = alertController.textFields![0].text
+            
+            //Add the activity to the date (it'll create a new day object if there are no activities )
+            self.dm.addActivity(focus: self.selectedFocus, day: self.showingDay, activity: inputName ?? "")
+            
+            //Loop through days in the array again to find the one just created
+            for i in (self.selectedFocus.listOfDays?.array as! [Day]){
+                if i.date == self.selectedDate{
+                    self.showingDay = i
+                }
+            }
+            
+            self.activitiesTable.reloadData()
+
+        }
+
+        alertController.addAction(cancelAction)
+        alertController.addAction(saveAction)
+
+        self.present(alertController, animated: true, completion: nil)
+        
     }
-    */
-
+    
 }
 
 extension CalendarView: FSCalendarDataSource, FSCalendarDelegate{
@@ -64,24 +97,23 @@ extension CalendarView: FSCalendarDataSource, FSCalendarDelegate{
         dateLabel.fadeTransition(0.5)
         dateLabel.text = string
         
-        /*for i in 0...4{
-            dm.addDay(focus: dm.focuses.focuses?.allObjects[i] as! Focus, date: date, activities: ["Did pushups", "Did weights"])
-        }*/
         
-        print((self.selectedFocus.listOfDays?.array as! [Day]))
+        // turn the selected date into a global variable
+        self.selectedDate = date
         
-        /*selectedDate = date
+        //the global variable for the day object thats showing on the screen
+        self.showingDay = Day(context: dm.managedContext)
+        self.showingDay.date = date
         
-        showingDay.listOfActivities = []
-        
+        //Loop through days in the array again to find the one just created
         for i in (self.selectedFocus.listOfDays?.array as! [Day]){
             if i.date == selectedDate{
-               showingDay = i
+                self.showingDay = i
             }
         }
         
         self.activitiesTable.reloadData()
-        */
+        self.activitiesTable.fadeTransition(0.5)
     }
     
     

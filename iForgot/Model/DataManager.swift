@@ -90,8 +90,38 @@ class DataManager{
         }catch{
             print("error finding or saving focuses \(error)")
         }
+    }
+    
+    func addActivity(focus: Focus, day: Day, activity: String){
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>.init(entityName: "Focuses")
         
-        
+        do{
+            let result = try managedContext.fetch(fetchRequest)
+            let objectUpdate = result[0] as! Focuses
+            
+            //find the index of the current focus
+            let index = (objectUpdate.focuses?.array as! [Focus]).firstIndex(of: focus)! //May be error here
+            
+            //list of days of the current focus
+            var days = (objectUpdate.focuses?.array as! [Focus])[index].listOfDays?.array as! [Day]
+            
+            //find the index of the day we are looking for
+            let d_index = days.firstIndex(of: day)
+            
+            //the index might be nil since the day may not have been created yet
+            if d_index == nil{
+                
+                //create a day and add the activity
+                self.addDay(focus: focus, date: day.date!, activities: [activity])
+            }else{
+                //add the activity to the list of activities for that specific day and focus
+                days[d_index!].listOfActivities?.append(activity)
+            }
+            try managedContext.save()
+            self.load()
+        }catch{
+            print("error finding or saving focuses \(error)")
+        }
     }
     
     
