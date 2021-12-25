@@ -66,7 +66,7 @@ extension FocusesViewController: UITableViewDelegate, UITableViewDataSource{
         if dm.fEmpty{
             return 0
         }else{
-            return dm.focuses.focuses?.allObjects.count ?? 0
+            return dm.focuses.focuses?.array.count ?? 0
         }
         
         
@@ -76,7 +76,7 @@ extension FocusesViewController: UITableViewDelegate, UITableViewDataSource{
         let cell = UITableViewCell()
         var content = cell.defaultContentConfiguration()
         
-        content.text = (dm.focuses.focuses?.allObjects as! [Focus])[indexPath.row].name
+        content.text = (dm.focuses.focuses?.array as! [Focus])[indexPath.row].name
 
         cell.contentConfiguration = content
         
@@ -87,7 +87,7 @@ extension FocusesViewController: UITableViewDelegate, UITableViewDataSource{
         
         let pos = focusesTable.cellForRow(at: indexPath)
         
-        for i in dm.focuses.focuses!.allObjects as! [Focus]{ // may be error due to !
+        for i in dm.focuses.focuses!.array as! [Focus]{ // may be error due to !
             if i.name == (pos?.contentConfiguration as! UIListContentConfiguration).text{ //deprecated
                 let viewController = CalendarView()
                 selectedFocus = i

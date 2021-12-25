@@ -17,7 +17,7 @@ extension Focus {
     }
 
     @NSManaged public var name: String?
-    @NSManaged public var listOfDays: NSSet?
+    @NSManaged public var listOfDays: NSOrderedSet?
     @NSManaged public var origon: Focuses?
 
 }

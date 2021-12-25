@@ -56,7 +56,7 @@ class DataManager{
         let focus_entity = NSEntityDescription.entity(forEntityName: "Focus", in: managedContext)
         let focus = Focus(entity: focus_entity!, insertInto: managedContext)
         focus.name = focusName
-        focus.listOfDays = NSSet(array: [])
+        focus.listOfDays = NSOrderedSet(array: [])
         
         do {
             let result = try managedContext.fetch(fetchRequest)
@@ -83,8 +83,8 @@ class DataManager{
         do{
             let result = try managedContext.fetch(fetchRequest)
             let objectUpdate = result[0] as! Focuses
-            let index = (objectUpdate.focuses?.allObjects as! [Focus]).firstIndex(of: focus)! //May be error here
-            (objectUpdate.focuses?.allObjects as! [Focus])[index].addToListOfDays(day)
+            let index = (objectUpdate.focuses?.array as! [Focus]).firstIndex(of: focus)! //May be error here
+            (objectUpdate.focuses?.array as! [Focus])[index].addToListOfDays(day)
             try managedContext.save()
             self.load()
         }catch{

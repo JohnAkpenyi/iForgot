@@ -68,21 +68,20 @@ extension CalendarView: FSCalendarDataSource, FSCalendarDelegate{
             dm.addDay(focus: dm.focuses.focuses?.allObjects[i] as! Focus, date: date, activities: ["Did pushups", "Did weights"])
         }*/
         
+        print((self.selectedFocus.listOfDays?.array as! [Day]))
         
-        print((self.selectedFocus.listOfDays?.allObjects as! [Day])[0])
-        
-        selectedDate = date
+        /*selectedDate = date
         
         showingDay.listOfActivities = []
         
-        for i in selectedFocus.listOfDays?.allObjects as! [Day]{
+        for i in (self.selectedFocus.listOfDays?.array as! [Day]){
             if i.date == selectedDate{
                showingDay = i
             }
         }
         
         self.activitiesTable.reloadData()
-        
+        */
     }
     
     

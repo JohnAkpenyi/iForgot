@@ -16,8 +16,8 @@ extension Focuses {
         return NSFetchRequest<Focuses>(entityName: "Focuses")
     }
 
-    @NSManaged public var focuses: NSSet?
-
+    @NSManaged public var focuses: NSOrderedSet?
+    
 }
 
 // MARK: Generated accessors for focuses
