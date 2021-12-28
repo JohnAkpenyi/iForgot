@@ -29,6 +29,7 @@
 		524F3D3C272488190074FB37 /* Lobster-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 524F3D3B272488190074FB37 /* Lobster-Regular.ttf */; };
 		524F3D3E272494A60074FB37 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524F3D3D272494A60074FB37 /* CalendarView.swift */; };
 		524F3D402724A10F0074FB37 /* FocusesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524F3D3F2724A10F0074FB37 /* FocusesViewController.swift */; };
+		5291271A277BAEE7005FF1FC /* ActivitiesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52912719277BAEE7005FF1FC /* ActivitiesTableViewCell.swift */; };
 		CFB863B2B0A2458AC7C8BD7D /* Pods_iForgotTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53D754C8327B83CE064D7170 /* Pods_iForgotTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -77,6 +78,7 @@
 		524F3D3B272488190074FB37 /* Lobster-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lobster-Regular.ttf"; sourceTree = "<group>"; };
 		524F3D3D272494A60074FB37 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		524F3D3F2724A10F0074FB37 /* FocusesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusesViewController.swift; sourceTree = "<group>"; };
+		52912719277BAEE7005FF1FC /* ActivitiesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivitiesTableViewCell.swift; sourceTree = "<group>"; };
 		53D754C8327B83CE064D7170 /* Pods_iForgotTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iForgotTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		561F9D82290AE9D85D192C11 /* Pods-iForgotTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iForgotTests.release.xcconfig"; path = "Target Support Files/Pods-iForgotTests/Pods-iForgotTests.release.xcconfig"; sourceTree = "<group>"; };
 		97AEC9F8680D442C9B37B8ED /* Pods_iForgot_iForgotUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iForgot_iForgotUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -222,6 +224,7 @@
 				524F3D3D272494A60074FB37 /* CalendarView.swift */,
 				523656B9274BA81300EA2C1F /* AddNewFocusController.swift */,
 				524F3D3F2724A10F0074FB37 /* FocusesViewController.swift */,
+				52912719277BAEE7005FF1FC /* ActivitiesTableViewCell.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -508,6 +511,7 @@
 				524F3D0B27247C160074FB37 /* iForgot.xcdatamodeld in Sources */,
 				5221DF75275F82210022D686 /* Focuses+CoreDataClass.swift in Sources */,
 				5221DF78275F82210022D686 /* Focus+CoreDataProperties.swift in Sources */,
+				5291271A277BAEE7005FF1FC /* ActivitiesTableViewCell.swift in Sources */,
 				524F3D0327247C160074FB37 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

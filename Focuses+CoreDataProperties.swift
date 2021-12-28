@@ -16,8 +16,29 @@ extension Focuses {
         return NSFetchRequest<Focuses>(entityName: "Focuses")
     }
 
-    @NSManaged public var focuses: NSOrderedSet?
+    @NSManaged private var focuses: NSOrderedSet?
+    
 
+}
+
+extension Focuses{
+    func addFocus(focusToAdd: Focus){
+        var array = self.focuses?.array as! [Focus]
+        array.append(focusToAdd)
+    }
+    
+    func removeFromFocuses(focusToRemove: Focus){
+        var array = self.focuses?.array as! [Focus]
+        array.remove(at: array.firstIndex(of: focusToRemove)!)
+    }
+    
+    func setFocuses(focuses: NSOrderedSet) {
+        self.focuses = focuses
+    }
+    
+    func getFocuses() -> [Focus]{
+        return self.focuses?.array as! [Focus]
+    }
 }
 
 // MARK: Generated accessors for focuses

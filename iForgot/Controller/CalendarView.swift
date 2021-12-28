@@ -11,12 +11,16 @@ import CoreData
 
 class CalendarView: UIViewController{
     
-    var selectedFocus = Focus()
-    
     let dm = DataManager()
-    var selectedDate = Date()
-    var showingDay = Day()
+    /**an empty day variable, instead of making the showingDay variable nil, this one is used - to avoid errors**/
     let emptyDay = Day()
+    /**The current focus**/
+    var selectedFocus = Focus()
+    /**The current date which has been selected**/
+    var selectedDate = Date()
+    /**The day variable (not a day as in monday, tuesday etc) - The current date which is being shown to the user  is the current day variable**/
+    var showingDay = Day()
+    
     
     @IBOutlet weak var calendar: FSCalendar!
     @IBOutlet weak var dateLabel: UILabel!
@@ -28,15 +32,38 @@ class CalendarView: UIViewController{
         
         calendar.dataSource = self
         calendar.delegate = self
+        //Turn the selected view into a box rather than a circle
+        calendar.appearance.borderRadius = 0
+        //Make the default event dots orange when not selected, but will turn blue when deselected
+        calendar.appearance.eventDefaultColor = UIColor.orange
+        
         activitiesTable.dataSource = self
         activitiesTable.delegate = self
         
-        focusTextField.text = selectedFocus.name
+        focusTextField.text = selectedFocus.getName()
         
         showingDay = Day(context: dm.managedContext)
         
         
         //print(showingDay)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        //Set the table view title text as the current date
+        let date = Date()
+        calendar.select(date)
+        
+        let formatter = DateFormatter()
+        
+        formatter.dateFormat = "EEEE dd-MM-YYYY"
+        
+        let string = formatter.string(from: date)
+        
+        print("\(string)")
+
+        dateLabel.text = string
+
     }
     
 
@@ -64,13 +91,14 @@ class CalendarView: UIViewController{
             self.dm.addActivity(focus: self.selectedFocus, day: self.showingDay, activity: inputName ?? "")
             
             //Loop through days in the array again to find the one just created
-            for i in (self.selectedFocus.listOfDays?.array as! [Day]){
-                if i.date == self.selectedDate{
+            for i in self.selectedFocus.getDays(){
+                if i.getDate() == self.selectedDate{
                     self.showingDay = i
                 }
             }
             
             self.activitiesTable.reloadData()
+            self.calendar.reloadData()
 
         }
 
@@ -83,8 +111,10 @@ class CalendarView: UIViewController{
     
 }
 
-extension CalendarView: FSCalendarDataSource, FSCalendarDelegate{
+extension CalendarView: FSCalendarDataSource, FSCalendarDelegate, FSCalendarDelegateAppearance{
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
+        
+        //Set the table view title text as the current date
         
         let formatter = DateFormatter()
         
@@ -103,11 +133,11 @@ extension CalendarView: FSCalendarDataSource, FSCalendarDelegate{
         
         //the global variable for the day object thats showing on the screen
         self.showingDay = Day(context: dm.managedContext)
-        self.showingDay.date = date
+        self.showingDay.setDate(date: date)
         
         //Loop through days in the array again to find the one just created
-        for i in (self.selectedFocus.listOfDays?.array as! [Day]){
-            if i.date == selectedDate{
+        for i in self.selectedFocus.getDays(){
+            if i.getDate() == selectedDate{
                 self.showingDay = i
             }
         }
@@ -116,6 +146,38 @@ extension CalendarView: FSCalendarDataSource, FSCalendarDelegate{
         self.activitiesTable.fadeTransition(0.5)
     }
     
+    func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
+        
+        var num = 0
+        
+        //Loop through days in the array to find the one which is being created
+        for i in self.selectedFocus.getDays(){
+            
+            //Check if i has the same date as the ones which are being shown.
+            if i.getDate() == date{
+                
+                switch i.getActivities().count{
+                case 0:
+                    num = 0
+                case 1:
+                    num = 1
+                case 2:
+                    num = 2
+                case 3:
+                    num = 3
+                default:
+                    num = 3
+                }
+                
+            }
+        }
+        
+        return num
+    }
+    
+    
+    
+  
     
 }
 
@@ -134,17 +196,24 @@ extension UIView {
 extension CalendarView: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return showingDay.listOfActivities?.count ?? 0
+        return showingDay.getActivities().count 
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell()
+        var cell = UITableViewCell()
         
-        var content = cell.defaultContentConfiguration()
+        if let customcell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? ActivitiesTableViewCell{
+            
+            customcell.configure(name: showingDay.getActivities()[indexPath.row] )
+            
+            cell = customcell
+        }
+        
+        /*var content = cell.defaultContentConfiguration()
         
         content.text = showingDay.listOfActivities?[indexPath.row]
         
-        cell.contentConfiguration = content
+        cell.contentConfiguration = content*/
         
         return cell
     }

@@ -16,10 +16,42 @@ extension Focus {
         return NSFetchRequest<Focus>(entityName: "Focus")
     }
 
-    @NSManaged public var name: String?
-    @NSManaged public var listOfDays: NSOrderedSet?
-    @NSManaged public var origon: Focuses?
+    @NSManaged private var name: String?
+    @NSManaged private var listOfDays: NSOrderedSet?
+    @NSManaged private var origon: Focuses?
+    
+}
 
+extension Focus{
+    func setName(name: String) {
+        self.name = name
+    }
+    
+    func getName() -> String{
+        self.name ?? "Error getting name"
+    }
+    
+    func addDay(dayToAdd: Day){
+        var array = self.listOfDays?.array as! [Day]
+        array.append(dayToAdd)
+    }
+    
+    func setDays(days: NSOrderedSet) {
+        self.listOfDays = days
+    }
+    
+    func removeFromDay(dayToRemove: Day){
+        var array = self.listOfDays?.array as! [Day]
+        array.remove(at: array.firstIndex(of: dayToRemove)!)
+    }
+    
+    func getDays() -> [Day]{
+        return self.listOfDays?.array as! [Day]
+    }
+    
+    func getParent() -> Focuses{
+        return self.origon!
+    }
 }
 
 // MARK: Generated accessors for listOfDays

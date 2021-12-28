@@ -14,6 +14,7 @@ class FocusesViewController: UIViewController {
     @IBOutlet weak var newFocusLabel: UILabel!
     @IBOutlet weak var plusBtn: UIButton!
     @IBOutlet weak var addfocusBtn: UIBarButtonItem!
+    @IBOutlet weak var focusesTitle: UIBarButtonItem!
     var selectedFocus = Focus()
     
     override func viewDidLoad() {
@@ -36,11 +37,13 @@ class FocusesViewController: UIViewController {
             newFocusLabel.isHidden = false
             focusesTable.isHidden = true
             addfocusBtn.customView?.isHidden = true
+            focusesTitle.customView?.isHidden = true
         }else{
             plusBtn.isHidden = true
             newFocusLabel.isHidden = true
             focusesTable.isHidden = false
             addfocusBtn.customView?.isHidden = false
+            focusesTitle.customView?.isHidden = false
         }
     }
     
@@ -66,7 +69,7 @@ extension FocusesViewController: UITableViewDelegate, UITableViewDataSource{
         if dm.fEmpty{
             return 0
         }else{
-            return dm.focuses.focuses?.array.count ?? 0
+            return dm.focuses.getFocuses().count ?? 0
         }
         
         
@@ -76,7 +79,7 @@ extension FocusesViewController: UITableViewDelegate, UITableViewDataSource{
         let cell = UITableViewCell()
         var content = cell.defaultContentConfiguration()
         
-        content.text = (dm.focuses.focuses?.array as! [Focus])[indexPath.row].name
+        content.text = dm.focuses.getFocuses()[indexPath.row].getName()
 
         cell.contentConfiguration = content
         
@@ -87,8 +90,8 @@ extension FocusesViewController: UITableViewDelegate, UITableViewDataSource{
         
         let pos = focusesTable.cellForRow(at: indexPath)
         
-        for i in dm.focuses.focuses!.array as! [Focus]{ // may be error due to !
-            if i.name == (pos?.contentConfiguration as! UIListContentConfiguration).text{ //deprecated
+        for i in dm.focuses.getFocuses(){ // may be error due to !
+            if i.getName() == (pos?.contentConfiguration as! UIListContentConfiguration).text{ //deprecated
                 let viewController = CalendarView()
                 selectedFocus = i
                 performSegue(withIdentifier: "openCalendarFocus", sender: self)

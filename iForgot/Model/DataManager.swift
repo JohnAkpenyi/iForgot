@@ -55,8 +55,8 @@ class DataManager{
         
         let focus_entity = NSEntityDescription.entity(forEntityName: "Focus", in: managedContext)
         let focus = Focus(entity: focus_entity!, insertInto: managedContext)
-        focus.name = focusName
-        focus.listOfDays = NSOrderedSet(array: [])
+        focus.setName(name: focusName)
+        //focus.listOfDays = NSOrderedSet(array: [])
         
         do {
             let result = try managedContext.fetch(fetchRequest)
@@ -77,14 +77,14 @@ class DataManager{
         let day_entity = NSEntityDescription.entity(forEntityName: "Day", in: managedContext)
         let day = Day(entity: day_entity!, insertInto: managedContext)
         
-        day.date = date
-        day.listOfActivities = activities
+        day.setDate(date: date)
+        day.setActivities(activities: activities)
         
         do{
             let result = try managedContext.fetch(fetchRequest)
             let objectUpdate = result[0] as! Focuses
-            let index = (objectUpdate.focuses?.array as! [Focus]).firstIndex(of: focus)! //May be error here
-            (objectUpdate.focuses?.array as! [Focus])[index].addToListOfDays(day)
+            let index = objectUpdate.getFocuses().firstIndex(of: focus)! //May be error here
+            objectUpdate.getFocuses()[index].addToListOfDays(day)
             try managedContext.save()
             self.load()
         }catch{
@@ -100,10 +100,10 @@ class DataManager{
             let objectUpdate = result[0] as! Focuses
             
             //find the index of the current focus
-            let index = (objectUpdate.focuses?.array as! [Focus]).firstIndex(of: focus)! //May be error here
+            let index = objectUpdate.getFocuses().firstIndex(of: focus)! //May be error here
             
             //list of days of the current focus
-            var days = (objectUpdate.focuses?.array as! [Focus])[index].listOfDays?.array as! [Day]
+            let days = objectUpdate.getFocuses()[index].getDays()
             
             //find the index of the day we are looking for
             let d_index = days.firstIndex(of: day)
@@ -112,10 +112,10 @@ class DataManager{
             if d_index == nil{
                 
                 //create a day and add the activity
-                self.addDay(focus: focus, date: day.date!, activities: [activity])
+                self.addDay(focus: focus, date: day.getDate(), activities: [activity])
             }else{
                 //add the activity to the list of activities for that specific day and focus
-                days[d_index!].listOfActivities?.append(activity)
+                days[d_index!].addActivity(activity: activity)
             }
             try managedContext.save()
             self.load()
