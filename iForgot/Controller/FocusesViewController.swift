@@ -29,7 +29,7 @@ class FocusesViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         self.focusesTable.reloadData()
         
-        if dm.fEmpty{
+        if dm.fEmpty || dm.focuses.getFocuses().count == 0{
             plusBtn.isHidden = false
             newFocusLabel.isHidden = false
             focusesTable.isHidden = true

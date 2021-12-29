@@ -39,12 +39,7 @@ extension Focus{
     func setDays(days: NSOrderedSet) {
         self.listOfDays = days
     }
-    
-    func removeFromDay(dayToRemove: Day){
-        var array = self.listOfDays?.array as! [Day]
-        array.remove(at: array.firstIndex(of: dayToRemove)!)
-    }
-    
+
     func getDays() -> [Day]{
         return self.listOfDays?.array as! [Day]
     }
