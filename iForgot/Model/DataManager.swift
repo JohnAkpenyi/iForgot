@@ -124,6 +124,15 @@ class DataManager{
         }
     }
     
+    func save(){
+        do{
+            try self.managedContext.save()
+            load()
+        }catch{
+            print(error)
+        }
+    }
+    
     
     func load(){
         

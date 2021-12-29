@@ -218,5 +218,16 @@ extension CalendarView: UITableViewDelegate, UITableViewDataSource{
         return cell
     }
     
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        
+        if editingStyle == .delete{
+            
+            showingDay.deleteActivity(activityToRemove: showingDay.getActivities()[indexPath.row])
+            dm.save()
+            tableView.deleteRows(at: [indexPath], with: .fade)
+            tableView.reloadData()
+        }
+    }
+    
     
 }

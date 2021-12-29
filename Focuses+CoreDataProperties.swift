@@ -27,7 +27,7 @@ extension Focuses{
         array.append(focusToAdd)
     }
     
-    func removeFromFocuses(focusToRemove: Focus){
+    func deleteFocus(focusToRemove: Focus){
         var array = self.focuses?.array as! [Focus]
         array.remove(at: array.firstIndex(of: focusToRemove)!)
     }

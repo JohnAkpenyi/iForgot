@@ -19,11 +19,8 @@ class FocusesViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         // Do any additional setup after loading the view.
-        
         dm.createFirstFocuses()
-        
         
         focusesTable.dataSource = self
         focusesTable.delegate = self
@@ -99,11 +96,19 @@ extension FocusesViewController: UITableViewDelegate, UITableViewDataSource{
             }
         }
         
-        
     }
     
-    
-    
-    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        
+        if editingStyle == .delete{
+            
+            dm.focuses.removeFromFocuses(dm.focuses.getFocuses()[indexPath.row])
+            dm.save()
+            tableView.deleteRows(at: [indexPath], with: .fade)
+            tableView.reloadData()
+            self.viewWillAppear(true)
+        }
+        
+    }
     
 }
