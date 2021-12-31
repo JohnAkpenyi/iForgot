@@ -7,6 +7,9 @@
     </entity>
     <entity name="Focus" representedClassName="Focus" syncable="YES">
         <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="reminderDT" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="reminderRepeat" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="remindersOn" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <relationship name="listOfDays" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Day" inverseName="origon" inverseEntity="Day"/>
         <relationship name="origon" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Focuses" inverseName="focuses" inverseEntity="Focuses"/>
     </entity>
@@ -15,7 +18,7 @@
     </entity>
     <elements>
         <element name="Day" positionX="115.80078125" positionY="-76.51953125" width="128" height="74"/>
-        <element name="Focus" positionX="-72.171875" positionY="-127.02734375" width="128" height="74"/>
+        <element name="Focus" positionX="-72.171875" positionY="-127.02734375" width="128" height="119"/>
         <element name="Focuses" positionX="-260.375" positionY="-59.73828125" width="128" height="44"/>
     </elements>
 </model>

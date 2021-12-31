@@ -2,7 +2,7 @@
 //  Focus+CoreDataProperties.swift
 //  iForgot
 //
-//  Created by John Akpenyi on 07/12/2021.
+//  Created by John Akpenyi on 31/12/2021.
 //
 //
 
@@ -16,37 +16,13 @@ extension Focus {
         return NSFetchRequest<Focus>(entityName: "Focus")
     }
 
-    @NSManaged private var name: String?
-    @NSManaged private var listOfDays: NSOrderedSet?
-    @NSManaged private var origon: Focuses?
-    
-}
+    @NSManaged public var name: String?
+    @NSManaged public var remindersOn: Bool
+    @NSManaged public var reminderDT: Date?
+    @NSManaged public var reminderRepeat: Bool
+    @NSManaged public var listOfDays: NSOrderedSet?
+    @NSManaged public var origon: Focuses?
 
-extension Focus{
-    func setName(name: String) {
-        self.name = name
-    }
-    
-    func getName() -> String{
-        self.name ?? "Error getting name"
-    }
-    
-    func addDay(dayToAdd: Day){
-        var array = self.listOfDays?.array as! [Day]
-        array.append(dayToAdd)
-    }
-    
-    func setDays(days: NSOrderedSet) {
-        self.listOfDays = days
-    }
-
-    func getDays() -> [Day]{
-        return self.listOfDays?.array as! [Day]
-    }
-    
-    func getParent() -> Focuses{
-        return self.origon!
-    }
 }
 
 // MARK: Generated accessors for listOfDays

@@ -25,27 +25,41 @@ class CalendarView: UIViewController{
     @IBOutlet weak var calendar: FSCalendar!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var activitiesTable: UITableView!
+
     @IBOutlet weak var focusTextField: UITextField!
+    @IBOutlet weak var calendarViewBtn: UIButton!
+    
+    @IBOutlet weak var calendarViewHeight: NSLayoutConstraint!
+    
+    var settingsButton: UIButton = UIButton()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         calendar.dataSource = self
         calendar.delegate = self
         //Turn the selected view into a box rather than a circle
         calendar.appearance.borderRadius = 0
         //Make the default event dots orange when not selected, but will turn blue when deselected
         calendar.appearance.eventDefaultColor = UIColor.orange
+        calendar.clipsToBounds = true
         
         activitiesTable.dataSource = self
         activitiesTable.delegate = self
         
-        focusTextField.text = selectedFocus.getName()
+        updateValues()
         
         showingDay = Day(context: dm.managedContext)
         
+        let largeConfig = UIImage.SymbolConfiguration(pointSize: 20, weight: .regular, scale: .large)
+        settingsButton.setImage(UIImage(systemName: "gearshape", withConfiguration: largeConfig), for: .normal)
+        settingsButton.frame = CGRect(x: 0, y: 0, width: 45, height: 45)
+        settingsButton.addTarget(self, action: #selector(settingsPressed), for: .touchUpInside)
+
+        var rightItem:UIBarButtonItem = UIBarButtonItem()
+        rightItem.customView = settingsButton
+        self.navigationItem.rightBarButtonItem = rightItem
         
-        //print(showingDay)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -56,19 +70,56 @@ class CalendarView: UIViewController{
         
         let formatter = DateFormatter()
         
-        formatter.dateFormat = "EEEE dd-MM-YYYY"
+        formatter.dateFormat = "EEEE"
         
         let string = formatter.string(from: date)
-        
-        print("\(string)")
 
         dateLabel.text = string
+    
+        
+    }
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "settingsView" {
+            let controller = segue.destination as! SettingsViewController
+            controller.selectedFocus = self.selectedFocus
+            controller.previousVC = (self.navigationController?.topViewController)!
+        }
+    }
 
+
+    @objc func settingsPressed() {
+
+        settingsButton.rotate()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+            
+            self.performSegue(withIdentifier: "settingsView", sender: self)
+        }
+    }
+    
+    @objc func updateValues(){
+        focusTextField.text = selectedFocus.getName()
+    }
+    
+    
+    @IBAction func toggleCalendarView(_ sender: Any) {
+
+        if calendarViewBtn.imageView?.image == UIImage(systemName: "chevron.up"){
+            calendar.setScope(.week, animated: true)
+            calendarViewBtn.setImage(UIImage(systemName: "chevron.down"), for: .normal)
+        }else{
+            calendar.setScope(.month, animated: true)
+            calendarViewBtn.setImage(UIImage(systemName: "chevron.up"), for: .normal)
+        }
+        
+        
+        
     }
     
 
     @IBAction func addActivity(_ sender: Any) {
- 
+        
         // create the actual alert controller view that will be the pop-up
         let alertController = UIAlertController(title: "New Activity", message: "Name this activity", preferredStyle: .alert)
 
@@ -112,6 +163,13 @@ class CalendarView: UIViewController{
 }
 
 extension CalendarView: FSCalendarDataSource, FSCalendarDelegate, FSCalendarDelegateAppearance{
+    
+    //Need this here in order for calendar view to to shrink with animation
+    func calendar(_ calendar: FSCalendar, boundingRectWillChange bounds: CGRect, animated: Bool) {
+        self.calendarViewHeight.constant = bounds.height
+        self.view.layoutIfNeeded()
+    }
+    
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         
         //Set the table view title text as the current date
@@ -141,6 +199,11 @@ extension CalendarView: FSCalendarDataSource, FSCalendarDelegate, FSCalendarDele
                 self.showingDay = i
             }
         }
+        
+        
+        
+        
+        
         
         self.activitiesTable.reloadData()
         self.activitiesTable.fadeTransition(0.5)
@@ -191,6 +254,17 @@ extension UIView {
         layer.add(animation, forKey: CATransitionType.fade.rawValue)
     }
 }
+
+extension UIView{
+    func rotate() {
+        let rotation : CABasicAnimation = CABasicAnimation(keyPath: "transform.rotation.z")
+        rotation.toValue = NSNumber(value: Double.pi * 2)
+        rotation.duration = 2
+        rotation.isCumulative = true
+        self.layer.add(rotation, forKey: "rotationAnimation")
+    }
+}
+
 
 
 extension CalendarView: UITableViewDelegate, UITableViewDataSource{
