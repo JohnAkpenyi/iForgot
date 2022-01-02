@@ -9,10 +9,6 @@
 /* Begin PBXBuildFile section */
 		01F960BF9DE1C5C1D54065E7 /* Pods_iForgot_iForgotUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97AEC9F8680D442C9B37B8ED /* Pods_iForgot_iForgotUITests.framework */; };
 		3EE5561070CB87B0D9F66DF7 /* Pods_iForgot.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B3ED8FCFCFD6A41370DF664 /* Pods_iForgot.framework */; };
-		5221DF75275F82210022D686 /* Focuses+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5221DF6F275F82210022D686 /* Focuses+CoreDataClass.swift */; };
-		5221DF76275F82210022D686 /* Focuses+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5221DF70275F82210022D686 /* Focuses+CoreDataProperties.swift */; };
-		5221DF79275F82210022D686 /* Day+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5221DF73275F82210022D686 /* Day+CoreDataClass.swift */; };
-		5221DF7A275F82210022D686 /* Day+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5221DF74275F82210022D686 /* Day+CoreDataProperties.swift */; };
 		523656BA274BA81300EA2C1F /* AddNewFocusController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523656B9274BA81300EA2C1F /* AddNewFocusController.swift */; };
 		523987FE2736AF0F001C9353 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523987FD2736AF0F001C9353 /* DataManager.swift */; };
 		524F3D0127247C160074FB37 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524F3D0027247C160074FB37 /* AppDelegate.swift */; };
@@ -29,8 +25,12 @@
 		524F3D402724A10F0074FB37 /* FocusesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524F3D3F2724A10F0074FB37 /* FocusesViewController.swift */; };
 		5291271A277BAEE7005FF1FC /* ActivitiesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52912719277BAEE7005FF1FC /* ActivitiesTableViewCell.swift */; };
 		52A76342277E121400C44F27 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A76341277E121400C44F27 /* SettingsViewController.swift */; };
-		52A7634B277EA1AA00C44F27 /* Focus+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A76349277EA1AA00C44F27 /* Focus+CoreDataClass.swift */; };
-		52A7634C277EA1AA00C44F27 /* Focus+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A7634A277EA1AA00C44F27 /* Focus+CoreDataProperties.swift */; };
+		52A763512782581700C44F27 /* Focus+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A7634F2782581700C44F27 /* Focus+CoreDataClass.swift */; };
+		52A763522782581700C44F27 /* Focus+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A763502782581700C44F27 /* Focus+CoreDataProperties.swift */; };
+		52A76357278258EA00C44F27 /* Day+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A76353278258EA00C44F27 /* Day+CoreDataClass.swift */; };
+		52A76358278258EA00C44F27 /* Day+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A76354278258EA00C44F27 /* Day+CoreDataProperties.swift */; };
+		52A76359278258EA00C44F27 /* Focuses+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A76355278258EA00C44F27 /* Focuses+CoreDataClass.swift */; };
+		52A7635A278258EA00C44F27 /* Focuses+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A76356278258EA00C44F27 /* Focuses+CoreDataProperties.swift */; };
 		CFB863B2B0A2458AC7C8BD7D /* Pods_iForgotTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53D754C8327B83CE064D7170 /* Pods_iForgotTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -55,10 +55,6 @@
 		2E3CC00084C90719E8D0E50D /* Pods-iForgot.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iForgot.release.xcconfig"; path = "Target Support Files/Pods-iForgot/Pods-iForgot.release.xcconfig"; sourceTree = "<group>"; };
 		4CAE40EAFB386FE64E9D32FC /* Pods-iForgot-iForgotUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iForgot-iForgotUITests.debug.xcconfig"; path = "Target Support Files/Pods-iForgot-iForgotUITests/Pods-iForgot-iForgotUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		51F3A7A51C4EE839F6BD743C /* Pods-iForgot-iForgotUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iForgot-iForgotUITests.release.xcconfig"; path = "Target Support Files/Pods-iForgot-iForgotUITests/Pods-iForgot-iForgotUITests.release.xcconfig"; sourceTree = "<group>"; };
-		5221DF6F275F82210022D686 /* Focuses+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Focuses+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
-		5221DF70275F82210022D686 /* Focuses+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Focuses+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
-		5221DF73275F82210022D686 /* Day+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Day+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
-		5221DF74275F82210022D686 /* Day+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Day+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		523656B9274BA81300EA2C1F /* AddNewFocusController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewFocusController.swift; sourceTree = "<group>"; };
 		523987FD2736AF0F001C9353 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		524F3CFD27247C160074FB37 /* iForgot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iForgot.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -79,8 +75,12 @@
 		524F3D3F2724A10F0074FB37 /* FocusesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusesViewController.swift; sourceTree = "<group>"; };
 		52912719277BAEE7005FF1FC /* ActivitiesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivitiesTableViewCell.swift; sourceTree = "<group>"; };
 		52A76341277E121400C44F27 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
-		52A76349277EA1AA00C44F27 /* Focus+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Focus+CoreDataClass.swift"; path = "iForgot/Model/Classes/Focus+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
-		52A7634A277EA1AA00C44F27 /* Focus+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Focus+CoreDataProperties.swift"; path = "iForgot/Model/Properties/Focus+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
+		52A7634F2782581700C44F27 /* Focus+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Focus+CoreDataClass.swift"; sourceTree = "<group>"; };
+		52A763502782581700C44F27 /* Focus+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Focus+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		52A76353278258EA00C44F27 /* Day+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Day+CoreDataClass.swift"; sourceTree = "<group>"; };
+		52A76354278258EA00C44F27 /* Day+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Day+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		52A76355278258EA00C44F27 /* Focuses+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Focuses+CoreDataClass.swift"; sourceTree = "<group>"; };
+		52A76356278258EA00C44F27 /* Focuses+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Focuses+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		53D754C8327B83CE064D7170 /* Pods_iForgotTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iForgotTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		561F9D82290AE9D85D192C11 /* Pods-iForgotTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iForgotTests.release.xcconfig"; path = "Target Support Files/Pods-iForgotTests/Pods-iForgotTests.release.xcconfig"; sourceTree = "<group>"; };
 		97AEC9F8680D442C9B37B8ED /* Pods_iForgot_iForgotUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iForgot_iForgotUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -130,9 +130,9 @@
 		523987FF2736AF19001C9353 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				5221DF6F275F82210022D686 /* Focuses+CoreDataClass.swift */,
-				52A76349277EA1AA00C44F27 /* Focus+CoreDataClass.swift */,
-				5221DF73275F82210022D686 /* Day+CoreDataClass.swift */,
+				52A76355278258EA00C44F27 /* Focuses+CoreDataClass.swift */,
+				52A7634F2782581700C44F27 /* Focus+CoreDataClass.swift */,
+				52A76353278258EA00C44F27 /* Day+CoreDataClass.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -140,9 +140,9 @@
 		523988002736AF34001C9353 /* Properties */ = {
 			isa = PBXGroup;
 			children = (
-				5221DF70275F82210022D686 /* Focuses+CoreDataProperties.swift */,
-				52A7634A277EA1AA00C44F27 /* Focus+CoreDataProperties.swift */,
-				5221DF74275F82210022D686 /* Day+CoreDataProperties.swift */,
+				52A76356278258EA00C44F27 /* Focuses+CoreDataProperties.swift */,
+				52A763502782581700C44F27 /* Focus+CoreDataProperties.swift */,
+				52A76354278258EA00C44F27 /* Day+CoreDataProperties.swift */,
 			);
 			path = Properties;
 			sourceTree = "<group>";
@@ -502,19 +502,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				52A7634B277EA1AA00C44F27 /* Focus+CoreDataClass.swift in Sources */,
-				5221DF7A275F82210022D686 /* Day+CoreDataProperties.swift in Sources */,
-				5221DF76275F82210022D686 /* Focuses+CoreDataProperties.swift in Sources */,
+				52A76359278258EA00C44F27 /* Focuses+CoreDataClass.swift in Sources */,
+				52A76357278258EA00C44F27 /* Day+CoreDataClass.swift in Sources */,
+				52A763512782581700C44F27 /* Focus+CoreDataClass.swift in Sources */,
 				524F3D402724A10F0074FB37 /* FocusesViewController.swift in Sources */,
 				524F3D3E272494A60074FB37 /* CalendarView.swift in Sources */,
 				523656BA274BA81300EA2C1F /* AddNewFocusController.swift in Sources */,
+				52A7635A278258EA00C44F27 /* Focuses+CoreDataProperties.swift in Sources */,
+				52A76358278258EA00C44F27 /* Day+CoreDataProperties.swift in Sources */,
 				523987FE2736AF0F001C9353 /* DataManager.swift in Sources */,
-				5221DF79275F82210022D686 /* Day+CoreDataClass.swift in Sources */,
 				52A76342277E121400C44F27 /* SettingsViewController.swift in Sources */,
-				52A7634C277EA1AA00C44F27 /* Focus+CoreDataProperties.swift in Sources */,
+				52A763522782581700C44F27 /* Focus+CoreDataProperties.swift in Sources */,
 				524F3D0127247C160074FB37 /* AppDelegate.swift in Sources */,
 				524F3D0B27247C160074FB37 /* iForgot.xcdatamodeld in Sources */,
-				5221DF75275F82210022D686 /* Focuses+CoreDataClass.swift in Sources */,
 				5291271A277BAEE7005FF1FC /* ActivitiesTableViewCell.swift in Sources */,
 				524F3D0327247C160074FB37 /* SceneDelegate.swift in Sources */,
 			);

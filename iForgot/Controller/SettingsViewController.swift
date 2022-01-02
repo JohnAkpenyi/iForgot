@@ -91,15 +91,10 @@ class SettingsViewController: UIViewController {
     
     @IBAction func saveChanges(_ sender: Any) {
         
-        UNUserNotificationCenter.current().removeAllDeliveredNotifications()
-        UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
+        UNUserNotificationCenter.current().removeDeliveredNotifications(withIdentifiers: [selectedFocus.getNotificationID()])
+        UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [selectedFocus.getNotificationID()])
         
-        selectedFocus.setName(name: focusName.text ?? selectedFocus.getName())
-        selectedFocus.setReminderOn(reminderOn: remindersToggle.isOn)
-        selectedFocus.setReminderRepeat(reminderRepeat: repeatText.isOn)
-        selectedFocus.setReminderDT(reminderDateTime: datePicker.date)
         
-        dm.save()
         
         let calendar = Calendar.current // or e.g. Calendar(identifier: .persian)
 
@@ -110,13 +105,30 @@ class SettingsViewController: UIViewController {
         
         if remindersToggle.isOn {
             if repeatText.isOn{
-                scheduleNotification(weekday: weekday, hour: hour, minute: minute, shouldRepeat: true)
+                
+                selectedFocus.setName(name: focusName.text ?? selectedFocus.getName())
+                selectedFocus.setReminderOn(reminderOn: remindersToggle.isOn)
+                selectedFocus.setReminderRepeat(reminderRepeat: repeatText.isOn)
+                selectedFocus.setReminderDT(reminderDateTime: datePicker.date)
+                selectedFocus.setNotificationID(identifier: scheduleNotification(weekday: weekday, hour: hour, minute: minute, shouldRepeat: true))
+                
+                dm.save()
+                
             }else{
-                scheduleNotification(weekday: weekday, hour: hour, minute: minute, shouldRepeat: false)
+                
+                selectedFocus.setName(name: focusName.text ?? selectedFocus.getName())
+                selectedFocus.setReminderOn(reminderOn: remindersToggle.isOn)
+                selectedFocus.setReminderRepeat(reminderRepeat: repeatText.isOn)
+                selectedFocus.setReminderDT(reminderDateTime: datePicker.date)
+                selectedFocus.setNotificationID(identifier: scheduleNotification(weekday: weekday, hour: hour, minute: minute, shouldRepeat: false))
+                
+                dm.save()
             }
         }else{
-            UNUserNotificationCenter.current().removeAllDeliveredNotifications()
-            UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
+
+            UNUserNotificationCenter.current().removeDeliveredNotifications(withIdentifiers: [selectedFocus.getNotificationID()])
+            UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [selectedFocus.getNotificationID()])
+
         }
         
         self.showAlertMsg(title: "✔", message: "Changes Saved ", time: 1)
@@ -166,7 +178,7 @@ class SettingsViewController: UIViewController {
             return(message)
         }
     
-    func scheduleNotification(weekday: Int, hour: Int, minute: Int, shouldRepeat: Bool){
+    func scheduleNotification(weekday: Int, hour: Int, minute: Int, shouldRepeat: Bool) -> String{
         let content = UNMutableNotificationContent()
         content.title = "iForgot"
         content.body = "When was the last time you focused on \(selectedFocus.getName())? 🧘‍♂️"
@@ -179,13 +191,14 @@ class SettingsViewController: UIViewController {
         dateComponents.hour = hour    // 14:00 hours
         dateComponents.minute = minute
         
+        let uuidString = UUID().uuidString
+        
         if shouldRepeat {
             // Create the trigger as a repeating event.
             let trigger = UNCalendarNotificationTrigger(
                      dateMatching: dateComponents, repeats: true)
             
             // Create the request
-            let uuidString = UUID().uuidString
             let request = UNNotificationRequest(identifier: uuidString,
                         content: content, trigger: trigger)
 
@@ -203,7 +216,6 @@ class SettingsViewController: UIViewController {
                      dateMatching: dateComponents, repeats: false)
             
             // Create the request
-            let uuidString = UUID().uuidString
             let request = UNNotificationRequest(identifier: uuidString,
                         content: content, trigger: trigger)
 
@@ -218,7 +230,7 @@ class SettingsViewController: UIViewController {
         }
         
         
-        
+        return uuidString
        
     }
     

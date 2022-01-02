@@ -2,7 +2,7 @@
 //  Focus+CoreDataProperties.swift
 //  iForgot
 //
-//  Created by John Akpenyi on 31/12/2021.
+//  Created by John Akpenyi on 02/01/2022.
 //
 //
 
@@ -20,6 +20,7 @@ extension Focus {
     @NSManaged public var remindersOn: Bool
     @NSManaged public var reminderDT: Date?
     @NSManaged public var reminderRepeat: Bool
+    @NSManaged public var notificationID: String?
     @NSManaged public var listOfDays: NSOrderedSet?
     @NSManaged public var origon: Focuses?
 
@@ -32,6 +33,14 @@ extension Focus{
     
     func getName() -> String{
         self.name ?? "Error getting name"
+    }
+    
+    func setNotificationID(identifier: String){
+        self.notificationID = identifier
+    }
+    
+    func getNotificationID() -> String{
+        return self.notificationID ?? "None found"
     }
     
     func setReminderOn(reminderOn: Bool){

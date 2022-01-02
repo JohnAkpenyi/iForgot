@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import UserNotifications
 
 class FocusesViewController: UIViewController {
 
@@ -42,6 +43,15 @@ class FocusesViewController: UIViewController {
             addfocusBtn.customView?.isHidden = false
             focusesTitle.customView?.isHidden = false
         }
+        
+        let center = UNUserNotificationCenter.current()
+        
+        center.getPendingNotificationRequests { (notifications) in
+              print("Count: \(notifications.count)")
+              for item in notifications {
+                  print(item.content.body)
+              }
+          }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -107,6 +117,16 @@ extension FocusesViewController: UITableViewDelegate, UITableViewDataSource{
             tableView.deleteRows(at: [indexPath], with: .fade)
             tableView.reloadData()
             self.viewWillAppear(true)
+            
+            let center = UNUserNotificationCenter.current()
+            
+            center.getPendingNotificationRequests { (notifications) in
+                  print("Count: \(notifications.count)")
+                  for item in notifications {
+                      print(item.content.title)
+                  }
+              }
+
         }
         
     }
