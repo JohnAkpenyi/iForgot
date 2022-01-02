@@ -111,22 +111,18 @@ extension FocusesViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         
         if editingStyle == .delete{
+
+            
+            let center = UNUserNotificationCenter.current()
+            center.removeDeliveredNotifications(withIdentifiers: [dm.focuses.getFocuses()[indexPath.row].getNotificationID()])
+            center.removePendingNotificationRequests(withIdentifiers: [dm.focuses.getFocuses()[indexPath.row].getNotificationID()])
             
             dm.focuses.removeFromFocuses(dm.focuses.getFocuses()[indexPath.row])
             dm.save()
+            
             tableView.deleteRows(at: [indexPath], with: .fade)
             tableView.reloadData()
             self.viewWillAppear(true)
-            
-            let center = UNUserNotificationCenter.current()
-            
-            center.getPendingNotificationRequests { (notifications) in
-                  print("Count: \(notifications.count)")
-                  for item in notifications {
-                      print(item.content.title)
-                  }
-              }
-
         }
         
     }
