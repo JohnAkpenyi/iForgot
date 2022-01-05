@@ -26,9 +26,11 @@ class CalendarView: UIViewController{
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var activitiesTable: UITableView!
 
-    @IBOutlet weak var focusTextField: UITextField!
     @IBOutlet weak var calendarViewBtn: UIButton!
     
+    @IBOutlet weak var navBar: UINavigationBar!
+    
+    @IBOutlet weak var navTitle: UINavigationItem!
     @IBOutlet weak var calendarViewHeight: NSLayoutConstraint!
     
     var settingsButton: UIButton = UIButton()
@@ -46,6 +48,8 @@ class CalendarView: UIViewController{
         
         activitiesTable.dataSource = self
         activitiesTable.delegate = self
+        activitiesTable.dragDelegate = self
+        activitiesTable.dragInteractionEnabled = true
         
         updateValues()
         
@@ -60,6 +64,27 @@ class CalendarView: UIViewController{
         rightItem.customView = settingsButton
         self.navigationItem.rightBarButtonItem = rightItem
         
+        self.navBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+        self.navBar.shadowImage = UIImage()
+        self.navBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "Lobster", size: 35)!]
+        
+        
+        // turn the selected date into a global variable
+        let date = Calendar.current.date(bySettingHour: 0, minute: 0, second: 0, of: Date())
+        self.selectedDate = date!
+      
+        //the global variable for the day object thats showing on the screen
+        self.showingDay = Day(context: dm.managedContext)
+        self.showingDay.setDate(date: date!)
+        
+        //Loop through days in the array again to find the one just created
+        for i in self.selectedFocus.getDays(){
+            if i.getDate() == selectedDate{
+                self.showingDay = i
+            }
+        }
+        
+ 
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -70,7 +95,7 @@ class CalendarView: UIViewController{
         
         let formatter = DateFormatter()
         
-        formatter.dateFormat = "EEEE"
+        formatter.dateFormat = "EEEE dd-MM-YYYY"
         
         let string = formatter.string(from: date)
 
@@ -99,7 +124,7 @@ class CalendarView: UIViewController{
     }
     
     @objc func updateValues(){
-        focusTextField.text = selectedFocus.getName()
+        navTitle.title = selectedFocus.getName()
     }
     
     
@@ -185,7 +210,6 @@ extension CalendarView: FSCalendarDataSource, FSCalendarDelegate, FSCalendarDele
         dateLabel.fadeTransition(0.5)
         dateLabel.text = string
         
-        
         // turn the selected date into a global variable
         self.selectedDate = date
         
@@ -267,7 +291,7 @@ extension UIView{
 
 
 
-extension CalendarView: UITableViewDelegate, UITableViewDataSource{
+extension CalendarView: UITableViewDelegate, UITableViewDataSource, UITableViewDragDelegate{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         return showingDay.getActivities().count 
@@ -302,6 +326,30 @@ extension CalendarView: UITableViewDelegate, UITableViewDataSource{
             tableView.reloadData()
         }
     }
+    
+   
+    
+    func tableView(_ tableView: UITableView, itemsForBeginning session: UIDragSession, at indexPath: IndexPath) -> [UIDragItem] {
+        let dragItem = UIDragItem(itemProvider: NSItemProvider())
+        dragItem.localObject = showingDay.getActivities()[indexPath.row]
+            return [ dragItem ]
+    }
+    
+    func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        
+     
+        let f = showingDay.getActivities()[sourceIndexPath.row]
+        showingDay.removeAt(pos: sourceIndexPath.row)
+        showingDay.insetAt(str: f, pos: destinationIndexPath.row)
+        dm.save()
+        self.activitiesTable.reloadData()
+
+        }
+
     
     
 }

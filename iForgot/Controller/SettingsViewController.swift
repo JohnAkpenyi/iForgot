@@ -8,12 +8,13 @@
 import UIKit
 import UserNotifications
 
-class SettingsViewController: UIViewController {
+class SettingsViewController: UIViewController{
     
     let dm = DataManager()
     var selectedFocus = Focus()
     @IBOutlet weak var focusName: UITextField!
     var previousVC = UIViewController()
+    @IBOutlet weak var deleteBtn: UIButton!
     
     var alertController: UIAlertController?
     var alertTimer: Timer?
@@ -27,18 +28,23 @@ class SettingsViewController: UIViewController {
     @IBOutlet weak var repeatLabel: UILabel!
     @IBOutlet weak var repeatText: UISwitch!
     @IBOutlet weak var datePicker: UIDatePicker!
+    @IBOutlet weak var timeLabel: UILabel!
+    @IBOutlet weak var timePicker: UIDatePicker!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        focusName.delegate = self
+        
         focusName.text = selectedFocus.getName()
-        remindersToggle.isOn = selectedFocus.remindersOn
+        remindersToggle.isOn = selectedFocus.getReminderOn()
         
         datePicker.date = selectedFocus.getReminderDT()
-        repeatText.isOn = selectedFocus.reminderRepeat
+        timePicker.date = selectedFocus.getReminderDT()
+        repeatText.isOn = selectedFocus.getReminderRepeat()
         
-        if !selectedFocus.remindersOn {
+        if !selectedFocus.getReminderOn() {
             remindersDateLabel.textColor = UIColor.placeholderText
             datePicker.isEnabled = false
             repeatLabel.textColor = UIColor.placeholderText
@@ -61,11 +67,15 @@ class SettingsViewController: UIViewController {
             datePicker.isEnabled = true
             repeatLabel.textColor = UIColor.label
             repeatText.isEnabled = true
+            timeLabel.textColor = UIColor.label
+            timePicker.isEnabled = true
         }else{
             remindersDateLabel.textColor = UIColor.placeholderText
             datePicker.isEnabled = false
             repeatLabel.textColor = UIColor.placeholderText
             repeatText.isEnabled = false
+            timeLabel.textColor = UIColor.placeholderText
+            timePicker.isEnabled = false
         }
     }
     
@@ -76,17 +86,31 @@ class SettingsViewController: UIViewController {
     }
     
     
-    /*@IBAction func pickDatePressed(_ sender: Any) {
-        
-  
-        
-        if self.datePicker.isHidden {
-            self.datePicker.isHidden = false
-        }else{
-            self.datePicker.isHidden = true
+    @IBAction func deleteFocusPressed(_ sender: Any) {
+        // create the actual alert controller view that will be the pop-up
+        let alertController = UIAlertController(title: "Are you sure you want to delete this Focus?", message: "You won't be able to recover it later", preferredStyle: .alert)
+
+
+        // add the buttons/actions to the view controller
+        let cancelAction = UIAlertAction(title: "No", style: .cancel, handler: nil)
+        let saveAction = UIAlertAction(title: "Yes", style: .default) { _ in
+            
+            self.dm.focuses.removeFromFocuses(self.selectedFocus)
+            UNUserNotificationCenter.current().removeDeliveredNotifications(withIdentifiers:[self.selectedFocus.getNotificationID()])
+            UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [self.selectedFocus.getNotificationID()])
+            self.dm.save()
+            
+            self.previousVC.navigationController?.popViewController(animated: true)
+            self.dismissView(self)
+            
+            
         }
-        
-    }*/
+
+        alertController.addAction(cancelAction)
+        alertController.addAction(saveAction)
+
+        self.present(alertController, animated: true, completion: nil)
+    }
     
     
     @IBAction func saveChanges(_ sender: Any) {
@@ -98,28 +122,37 @@ class SettingsViewController: UIViewController {
         
         let calendar = Calendar.current // or e.g. Calendar(identifier: .persian)
 
-        let hour = calendar.component(.hour, from: datePicker.date)
-        let minute = calendar.component(.minute, from: datePicker.date)
+        let hour = calendar.component(.hour, from: timePicker.date)
+        let minute = calendar.component(.minute, from: timePicker.date)
         let weekday = calendar.component(.weekday, from: datePicker.date)
         
         
         if remindersToggle.isOn {
             if repeatText.isOn{
                 
+                let d = datePicker.date
+                
+                let date = Calendar.current.date(bySettingHour: hour, minute: minute, second: 0, of: d)!
+                
                 selectedFocus.setName(name: focusName.text ?? selectedFocus.getName())
                 selectedFocus.setReminderOn(reminderOn: remindersToggle.isOn)
                 selectedFocus.setReminderRepeat(reminderRepeat: repeatText.isOn)
-                selectedFocus.setReminderDT(reminderDateTime: datePicker.date)
+                selectedFocus.setReminderDT(reminderDateTime: date)
                 selectedFocus.setNotificationID(identifier: scheduleNotification(weekday: weekday, hour: hour, minute: minute, shouldRepeat: true))
+ 
                 
                 dm.save()
                 
             }else{
                 
+                let d = datePicker.date
+                
+                let date = Calendar.current.date(bySettingHour: hour, minute: minute, second: 0, of: d)!
+                
                 selectedFocus.setName(name: focusName.text ?? selectedFocus.getName())
                 selectedFocus.setReminderOn(reminderOn: remindersToggle.isOn)
                 selectedFocus.setReminderRepeat(reminderRepeat: repeatText.isOn)
-                selectedFocus.setReminderDT(reminderDateTime: datePicker.date)
+                selectedFocus.setReminderDT(reminderDateTime: date)
                 selectedFocus.setNotificationID(identifier: scheduleNotification(weekday: weekday, hour: hour, minute: minute, shouldRepeat: false))
                 
                 dm.save()
@@ -139,7 +172,7 @@ class SettingsViewController: UIViewController {
     
     func showAlertMsg(title: String, message: String, time: Int) {
 
-            guard (self.alertController == nil) else {
+        guard (self.alertController == nil) else {
                 print("Alert already displayed")
                 return
             }
@@ -240,8 +273,11 @@ class SettingsViewController: UIViewController {
 
 }
 
-extension SettingsViewController{
+extension SettingsViewController: UITextFieldDelegate{
     
-    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
     
 }

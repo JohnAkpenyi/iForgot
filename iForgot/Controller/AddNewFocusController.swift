@@ -6,54 +6,77 @@
 //
 
 import UIKit
-import Combine
 
-class AddNewFocusController: UIViewController {
+class AddNewFocusController: UIViewController, UITextFieldDelegate{
 
     let dm = DataManager()
+    @IBOutlet weak var focusNameView: UIView!
     @IBOutlet weak var nameField: UITextField!
     @IBOutlet weak var createBtn: UIButton!
-    @IBOutlet weak var pickColor: UIButton!
+
+    @IBOutlet weak var reminderOnView: UIView!
+    @IBOutlet weak var question1Label: UILabel!
     
-    let picker = UIColorPickerViewController()
-    // Global declaration, to keep the subscription alive.
-    var cancellable: AnyCancellable?
+    @IBOutlet weak var reminderDetailsView: UIView!
+    @IBOutlet weak var timePickerView: UIDatePicker!
+    @IBOutlet weak var datePickerView: UIDatePicker!
+    @IBOutlet weak var repeatSwitcher: UISwitch!
+    @IBOutlet weak var noBtn: UIButton!
+    
+    var alertController: UIAlertController?
+    var alertTimer: Timer?
+    var remainingTime = 0
+    var baseMessage: String?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Setting the Initial Color of the Picker
-        picker.selectedColor = self.view.backgroundColor!
+        reminderOnView.isHidden = true
+        reminderDetailsView.isHidden = true
+        
+        nameField.delegate = self
+        
+        var bottomLine = CALayer()
+        bottomLine.frame = CGRect(x: 0.0, y: nameField.frame.height - 1, width: nameField.frame.width, height: 1.0)
+        bottomLine.backgroundColor = UIColor.label.cgColor
+        nameField.borderStyle = UITextField.BorderStyle.none
+        nameField.layer.addSublayer(bottomLine)
+        
+   
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
 
-        // Setting Delegate
-        picker.delegate = self
-        pickColor.isHidden = true
-        pickColor.isEnabled = false
+    @IBAction func YesPressed(_ sender: Any) {
+        
+        UIView.animate(withDuration: 1.0, delay: 0.0, options: UIView.AnimationOptions.curveEaseOut, animations: {
+                self.reminderOnView.alpha = 0.0
+            self.reminderDetailsView.alpha = 0.0
+                    }, completion: {
+                        (finished: Bool) -> Void in
+        
+                        //Once the view is completely invisible, unhide the next view and fade it back in
+                        self.reminderOnView.isHidden = true
+                        self.reminderDetailsView.isHidden = false
+        
+                        // Fade in
+                        UIView.animate(withDuration: 1.0, delay: 0.0, options: UIView.AnimationOptions.curveEaseIn, animations: {
+                            self.reminderDetailsView.alpha = 1.0
+                            }, completion: nil)
+                })
+        
     }
     
-    @IBAction func pickColor(_ sender: Any) {
-        
-        /*let picker = UIColorPickerViewController()
-        picker.selectedColor = self.view.backgroundColor!
-        
-        //  Subscribing selectedColor property changes.
-        self.cancellable = picker.publisher(for: \.selectedColor)
-            .sink { color in
-                
-                //  Changing view color on main thread.
-                DispatchQueue.main.async {
-                    self.view.backgroundColor = color
-                }
-            }
-        
-        self.present(picker, animated: true, completion: nil)*/
-    }
-    
-    @IBAction func createBtnPressed(_ sender: Any) {
+    @IBAction func NoPressed(_ sender: Any) {
         
         dm.addFocus(focusName: nameField.text ?? "No name found")
         dm.load()
         //print(dm.focuses)
+        noBtn.isEnabled = false
         
         
         
@@ -69,29 +92,148 @@ class AddNewFocusController: UIViewController {
             self.navigationController?.popViewController(animated: false)
         }
         
-        // Presenting the Color Picker
-        self.present(picker, animated: true, completion: nil)
-        
-        //performSegue(withIdentifier: "openCalendarView", sender: self)
     }
     
     
+    @IBAction func createFocusRE(_ sender: Any) {
+        
+        let d = datePickerView.date
+        
+        let date = Calendar.current.date(bySettingHour: Calendar.current.component(.hour, from: timePickerView.date), minute: Calendar.current.component(.minute, from: timePickerView.date), second: 0, of: d)!
+        
+        dm.addFocusRE(focusName: nameField.text ?? "No name", reminderOn: true, reminderRepeat: repeatSwitcher.isOn, reminderDT: date, notificationID: scheduleNotification(weekday: Calendar.current.component(.weekday, from: date), hour: Calendar.current.component(.hour, from: date), minute: Calendar.current.component(.minute, from: date), shouldRepeat: repeatSwitcher.isOn))
+        
+        self.navigationController?.popViewController(animated: true)
+        
+    }
+    
+    
+    @IBAction func createBtnPressed(_ sender: Any) {
+        
+        if nameField.text?.isEmpty == true {
+            showAlertMsg(title: "No Name Found", message: "Please enter a name", time: 2)
+        }else{
+            question1Label.text = "Do you want to be reminded to focus on '\(nameField.text ?? "No name")' ?"
+            
+            UIView.animate(withDuration: 1.0, delay: 0.0, options: UIView.AnimationOptions.curveEaseOut, animations: {
+                        self.focusNameView.alpha = 0.0
+                self.reminderOnView.alpha = 0.0
+                        }, completion: {
+                            (finished: Bool) -> Void in
+            
+                            //Once the view is completely invisible, unhide the next view and fade it back in
+                            self.focusNameView.isHidden = true
+                            self.reminderOnView.isHidden = false
+            
+                            // Fade in
+                            UIView.animate(withDuration: 1.0, delay: 0.0, options: UIView.AnimationOptions.curveEaseIn, animations: {
+                                self.reminderOnView.alpha = 1.0
+                                }, completion: nil)
+                    })
+        }
+ 
+    }
+    
+    
+    func showAlertMsg(title: String, message: String, time: Int) {
+
+            guard (self.alertController == nil) else {
+                print("Alert already displayed")
+                return
+            }
+
+            self.baseMessage = message
+            self.remainingTime = time
+
+        self.alertController = UIAlertController(title: title, message: self.alertMessage(), preferredStyle: .alert)
+        
+    
+        self.alertTimer = Timer.scheduledTimer(timeInterval: 0.4, target: self, selector: #selector(self.countDown), userInfo: nil, repeats: true)
+
+            self.present(self.alertController!, animated: true, completion: nil)
+        }
+
+    @objc func countDown() {
+
+            self.remainingTime -= 1
+            if (self.remainingTime < 0) {
+                self.alertTimer?.invalidate()
+                self.alertTimer = nil
+                self.alertController!.dismiss(animated: true, completion: {
+                    self.alertController = nil
+                })
+            } else {
+                self.alertController!.message = self.alertMessage()
+            }
+
+        }
+
+    func alertMessage() -> String {
+            var message=""
+            if let baseMessage=self.baseMessage {
+                message=baseMessage+" "
+            }
+            return(message)
+        }
+    
+    func scheduleNotification(weekday: Int, hour: Int, minute: Int, shouldRepeat: Bool) -> String{
+        let content = UNMutableNotificationContent()
+        content.title = "iForgot"
+        content.body = "When was the last time you focused on \(nameField.text!)? 🧘‍♂️"
+        
+        // Configure the recurring date.
+        var dateComponents = DateComponents()
+        dateComponents.calendar = Calendar.current
+
+        dateComponents.weekday = weekday  // Friday
+        dateComponents.hour = hour    // 14:00 hours
+        dateComponents.minute = minute
+        
+        let uuidString = UUID().uuidString
+        
+        if shouldRepeat {
+            // Create the trigger as a repeating event.
+            let trigger = UNCalendarNotificationTrigger(
+                     dateMatching: dateComponents, repeats: true)
+            
+            // Create the request
+            let request = UNNotificationRequest(identifier: uuidString,
+                        content: content, trigger: trigger)
+
+            // Schedule the request with the system.
+            let notificationCenter = UNUserNotificationCenter.current()
+            notificationCenter.add(request) { (error) in
+               if error != nil {
+                  // Handle any errors.
+                   print(error)
+               }
+            }
+        }else{
+            // Create the trigger as a non repeating event.
+            let trigger = UNCalendarNotificationTrigger(
+                     dateMatching: dateComponents, repeats: false)
+            
+            // Create the request
+            let request = UNNotificationRequest(identifier: uuidString,
+                        content: content, trigger: trigger)
+
+            // Schedule the request with the system.
+            let notificationCenter = UNUserNotificationCenter.current()
+            notificationCenter.add(request) { (error) in
+               if error != nil {
+                  // Handle any errors.
+                   print(error)
+               }
+            }
+        }
+        
+        
+        return uuidString
+       
+    }
     
     
 
 }
 
-extension AddNewFocusController: UIColorPickerViewControllerDelegate{
-    //  Called once you have finished picking the color.
-    func colorPickerViewControllerDidFinish(_ viewController: UIColorPickerViewController) {
-        self.view.backgroundColor = viewController.selectedColor
-        print(self.dm.hexStringFromColor(color: viewController.selectedColor))
-    }
-    
-    //  Called on every color selection done in the picker.
-    func colorPickerViewControllerDidSelectColor(_ viewController: UIColorPickerViewController) {
-        print(self.picker.selectedColor)
-            self.view.backgroundColor = viewController.selectedColor
-        
-    }
-}
+

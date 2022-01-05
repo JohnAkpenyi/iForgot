@@ -73,6 +73,32 @@ class DataManager{
         
     }
     
+    func addFocusRE(focusName: String, reminderOn: Bool, reminderRepeat: Bool, reminderDT: Date, notificationID: String){
+        
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>.init(entityName: "Focuses")
+        
+        let focus_entity = NSEntityDescription.entity(forEntityName: "Focus", in: managedContext)
+        let focus = Focus(entity: focus_entity!, insertInto: managedContext)
+        focus.setName(name: focusName)
+        focus.setReminderOn(reminderOn: reminderOn)
+        focus.setReminderRepeat(reminderRepeat: reminderRepeat)
+        focus.setReminderDT(reminderDateTime: reminderDT)
+        focus.setNotificationID(identifier: notificationID)
+        //focus.listOfDays = NSOrderedSet(array: [])
+        
+        do {
+            let result = try managedContext.fetch(fetchRequest)
+            let objectUpdate = result[0] as! Focuses
+            //objectUpdate.setValue(NSSet(array: [focus]), forKey: "focuses")
+            objectUpdate.addToFocuses(focus)
+            try managedContext.save() // look in AppDelegate.swift for this function
+            self.load()
+        } catch {
+          print("error finding or saving focuses \(error)")
+        }
+        
+    }
+    
     func addDay(focus: Focus, date: Date, activities: [String]){
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>.init(entityName: "Focuses")
         

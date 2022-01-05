@@ -16,7 +16,7 @@ extension Focuses {
         return NSFetchRequest<Focuses>(entityName: "Focuses")
     }
 
-    @NSManaged public var focuses: NSOrderedSet?
+    @NSManaged private var focuses: NSOrderedSet?
 
 }
 

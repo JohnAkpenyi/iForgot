@@ -8,7 +8,9 @@
 import UIKit
 import UserNotifications
 
-class FocusesViewController: UIViewController {
+class FocusesViewController: UIViewController{
+    
+    
 
     let dm = DataManager()
     @IBOutlet weak var focusesTable: UITableView!
@@ -25,6 +27,8 @@ class FocusesViewController: UIViewController {
         
         focusesTable.dataSource = self
         focusesTable.delegate = self
+        focusesTable.dragDelegate = self
+        focusesTable.dragInteractionEnabled = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -43,15 +47,7 @@ class FocusesViewController: UIViewController {
             addfocusBtn.customView?.isHidden = false
             focusesTitle.customView?.isHidden = false
         }
-        
-        let center = UNUserNotificationCenter.current()
-        
-        center.getPendingNotificationRequests { (notifications) in
-              print("Count: \(notifications.count)")
-              for item in notifications {
-                  print(item.content.body)
-              }
-          }
+
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -70,7 +66,9 @@ class FocusesViewController: UIViewController {
 
 }
 
-extension FocusesViewController: UITableViewDelegate, UITableViewDataSource{
+extension FocusesViewController: UITableViewDelegate, UITableViewDataSource, UITableViewDragDelegate{
+    
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         if dm.fEmpty{
@@ -83,12 +81,15 @@ extension FocusesViewController: UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell()
-        var content = cell.defaultContentConfiguration()
+        var cell = UITableViewCell()
         
-        content.text = dm.focuses.getFocuses()[indexPath.row].getName()
-
-        cell.contentConfiguration = content
+        if let customcell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as?
+            FocusesTableViewCell{
+            
+            customcell.configure(name: dm.focuses.getFocuses()[indexPath.row].getName())
+            
+            cell = customcell
+        }
         
         return cell
     }
@@ -98,7 +99,7 @@ extension FocusesViewController: UITableViewDelegate, UITableViewDataSource{
         let pos = focusesTable.cellForRow(at: indexPath)
         
         for i in dm.focuses.getFocuses(){ // may be error due to !
-            if i.getName() == (pos?.contentConfiguration as! UIListContentConfiguration).text{ //deprecated
+            if i.getName() == (pos as! FocusesTableViewCell).labelTitle.text{ //deprecated
                 let viewController = CalendarView()
                 selectedFocus = i
                 performSegue(withIdentifier: "openCalendarFocus", sender: self)
@@ -106,6 +107,10 @@ extension FocusesViewController: UITableViewDelegate, UITableViewDataSource{
             }
         }
         
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 60
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
@@ -126,5 +131,25 @@ extension FocusesViewController: UITableViewDelegate, UITableViewDataSource{
         }
         
     }
+    
+    func tableView(_ tableView: UITableView, itemsForBeginning session: UIDragSession, at indexPath: IndexPath) -> [UIDragItem] {
+        let dragItem = UIDragItem(itemProvider: NSItemProvider())
+        dragItem.localObject = dm.focuses.getFocuses()[indexPath.row]
+            return [ dragItem ]
+    }
+    
+    func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        
+        let f = dm.focuses.getFocuses()[sourceIndexPath.row]
+        dm.focuses.removeFromFocuses(at: sourceIndexPath.row)
+        dm.focuses.insertIntoFocuses(f, at: destinationIndexPath.row)
+        dm.save()
+        self.focusesTable.reloadData()
+
+        }
     
 }

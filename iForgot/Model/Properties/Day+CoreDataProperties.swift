@@ -16,9 +16,9 @@ extension Day {
         return NSFetchRequest<Day>(entityName: "Day")
     }
 
-    @NSManaged public var date: Date?
-    @NSManaged public var listOfActivities: [String]?
-    @NSManaged public var origon: Focus?
+    @NSManaged private var date: Date?
+    @NSManaged private var listOfActivities: [String]?
+    @NSManaged private var origon: Focus?
 
 }
 
@@ -37,6 +37,14 @@ extension Day{
     
     func setActivities(activities: [String]){
         self.listOfActivities = activities
+    }
+    
+    func removeAt(pos: Int){
+        self.listOfActivities?.remove(at: pos)
+    }
+    
+    func insetAt(str: String, pos: Int){
+        self.listOfActivities?.insert(str, at: pos)
     }
     
     func deleteActivity(activityToRemove: String){

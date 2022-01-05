@@ -16,13 +16,13 @@ extension Focus {
         return NSFetchRequest<Focus>(entityName: "Focus")
     }
 
-    @NSManaged public var name: String?
-    @NSManaged public var remindersOn: Bool
-    @NSManaged public var reminderDT: Date?
-    @NSManaged public var reminderRepeat: Bool
-    @NSManaged public var notificationID: String?
-    @NSManaged public var listOfDays: NSOrderedSet?
-    @NSManaged public var origon: Focuses?
+    @NSManaged private var name: String?
+    @NSManaged private var remindersOn: Bool
+    @NSManaged private var reminderDT: Date?
+    @NSManaged private var reminderRepeat: Bool
+    @NSManaged private var notificationID: String?
+    @NSManaged private var listOfDays: NSOrderedSet?
+    @NSManaged private var origon: Focuses?
 
 }
 
