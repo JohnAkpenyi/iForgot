@@ -74,7 +74,7 @@ extension FocusesViewController: UITableViewDelegate, UITableViewDataSource, UIT
         if dm.fEmpty{
             return 0
         }else{
-            return dm.focuses.getFocuses().count ?? 0
+            return dm.focuses.getFocuses().count
         }
         
         
@@ -100,7 +100,6 @@ extension FocusesViewController: UITableViewDelegate, UITableViewDataSource, UIT
         
         for i in dm.focuses.getFocuses(){ // may be error due to !
             if i.getName() == (pos as! FocusesTableViewCell).labelTitle.text{ //deprecated
-                let viewController = CalendarView()
                 selectedFocus = i
                 performSegue(withIdentifier: "openCalendarFocus", sender: self)
                 

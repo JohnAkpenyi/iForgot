@@ -60,7 +60,7 @@ class CalendarView: UIViewController{
         settingsButton.frame = CGRect(x: 0, y: 0, width: 45, height: 45)
         settingsButton.addTarget(self, action: #selector(settingsPressed), for: .touchUpInside)
 
-        var rightItem:UIBarButtonItem = UIBarButtonItem()
+        let rightItem:UIBarButtonItem = UIBarButtonItem()
         rightItem.customView = settingsButton
         self.navigationItem.rightBarButtonItem = rightItem
         

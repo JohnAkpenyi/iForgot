@@ -37,7 +37,7 @@ class AddNewFocusController: UIViewController, UITextFieldDelegate{
         
         nameField.delegate = self
         
-        var bottomLine = CALayer()
+        let bottomLine = CALayer()
         bottomLine.frame = CGRect(x: 0.0, y: nameField.frame.height - 1, width: nameField.frame.width, height: 1.0)
         bottomLine.backgroundColor = UIColor.label.cgColor
         nameField.borderStyle = UITextField.BorderStyle.none
@@ -205,7 +205,7 @@ class AddNewFocusController: UIViewController, UITextFieldDelegate{
             notificationCenter.add(request) { (error) in
                if error != nil {
                   // Handle any errors.
-                   print(error)
+                   print(error!)
                }
             }
         }else{
@@ -222,7 +222,7 @@ class AddNewFocusController: UIViewController, UITextFieldDelegate{
             notificationCenter.add(request) { (error) in
                if error != nil {
                   // Handle any errors.
-                   print(error)
+                   print(error!)
                }
             }
         }

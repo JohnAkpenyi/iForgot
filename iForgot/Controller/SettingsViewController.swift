@@ -240,7 +240,7 @@ class SettingsViewController: UIViewController{
             notificationCenter.add(request) { (error) in
                if error != nil {
                   // Handle any errors.
-                   print(error)
+                   print(error!)
                }
             }
         }else{
@@ -257,7 +257,7 @@ class SettingsViewController: UIViewController{
             notificationCenter.add(request) { (error) in
                if error != nil {
                   // Handle any errors.
-                   print(error)
+                   print(error!)
                }
             }
         }
