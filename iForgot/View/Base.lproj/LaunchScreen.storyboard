@@ -16,7 +16,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="hFx-y7-YNF">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconWhite" translatesAutoresizingMaskIntoConstraints="NO" id="hFx-y7-YNF">
                                 <rect key="frame" x="122" y="313" width="170" height="270"/>
                                 <color key="tintColor" systemColor="labelColor"/>
                                 <constraints>
@@ -26,11 +26,10 @@
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="hFx-y7-YNF" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="122" id="IUg-fn-s2m"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="hFx-y7-YNF" secondAttribute="bottom" constant="279" id="oIO-4N-onO"/>
-                            <constraint firstItem="hFx-y7-YNF" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="269" id="yWa-uO-1TJ"/>
+                            <constraint firstItem="hFx-y7-YNF" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="4Rb-8q-xHu"/>
+                            <constraint firstItem="hFx-y7-YNF" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="f9B-qY-Vyh"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -40,7 +39,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="logo" width="600" height="1040"/>
+        <image name="iconWhite" width="1024" height="1024"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
