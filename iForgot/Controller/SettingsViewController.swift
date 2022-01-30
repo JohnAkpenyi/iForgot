@@ -47,6 +47,8 @@ class SettingsViewController: UIViewController{
         if !selectedFocus.getReminderOn() {
             remindersDateLabel.textColor = UIColor.placeholderText
             datePicker.isEnabled = false
+            timeLabel.textColor = UIColor.placeholderText
+            timePicker.isEnabled = false
             repeatLabel.textColor = UIColor.placeholderText
             repeatText.isEnabled = false
         }
